@@ -1,15 +1,14 @@
-package Model;
+package pojo;
+
 import java.io.Serializable;
 
-public class IDDiem implements Serializable {
+public class IDDanhSachChoMonHoc implements Serializable {
     private String mssv;
-    private String lop;
     private String monHoc;
 
 
-    public IDDiem(String mssv, String lop, String monHoc) {
+    public IDDanhSachChoMonHoc(String mssv, String monHoc) {
         this.mssv = mssv;
-        this.lop = lop;
         this.monHoc = monHoc;
     }
 
@@ -20,13 +19,6 @@ public class IDDiem implements Serializable {
     public void setMssv(String mssv) {
         this.mssv = mssv;
     }
-    public String getLop() {
-        return this.lop;
-    }
-
-    public void setLop(String lop) {
-        this.lop = lop;
-    }
     public String getMonHoc() {
         return this.monHoc;
     }
@@ -34,4 +26,5 @@ public class IDDiem implements Serializable {
     public void setMonHoc(String monHoc) {
         this.monHoc = monHoc;
     }
+
 }

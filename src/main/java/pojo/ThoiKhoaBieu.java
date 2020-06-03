@@ -1,4 +1,4 @@
-package Model;
+package pojo;
 
 import java.io.Serializable;
 
