@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.Diem" table="diem" catalog="quanlisinhvien" optimistic-lock="version">
+        <composite-id name="id" class="pojo.IDDiem">
+            <key-property name="mssv" type="string">
+                <column name="MSSV" length="15" />
+            </key-property>
+            <key-property name="lop" type="string">
+                <column name="Lop" length="10" />
+            </key-property>
+            <key-property name="monHoc" type="string">
+                <column name="MonHoc" length="50" />
+            </key-property>
+        </composite-id>
+        <property name="hoTen" type="string">
+            <column name="HoTen" length="50" />
+        </property>
+        <property name="diemGk" type="java.lang.Float">
+            <column name="DiemGK" precision="12" scale="0" />
+        </property>
+        <property name="diemCk" type="java.lang.Float">
+            <column name="DiemCK" precision="12" scale="0" />
+        </property>
+        <property name="diemKhac" type="java.lang.Float">
+            <column name="DiemKhac" precision="12" scale="0" />
+        </property>
+        <property name="diemTong" type="java.lang.Float">
+            <column name="DiemTong" precision="12" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>
