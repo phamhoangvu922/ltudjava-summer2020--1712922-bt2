@@ -1,5 +1,5 @@
 package dao;
-import util.HibernateUtil;
+import connection.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;

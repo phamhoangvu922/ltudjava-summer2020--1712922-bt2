@@ -11,6 +11,14 @@ public class SinhVien implements Serializable {
     private String matKhauMacDinh;
     private String matKhau;
 
+    public SinhVien() {
+    }
+
+
+    public SinhVien(String mssv) {
+        this.mssv = mssv;
+    }
+
     public SinhVien(String mssv, Integer stt, String hoTen, String gioiTinh, String cmnd, String lop,
                     String matKhauMacDinh, String matKhau) {
         this.mssv = mssv;

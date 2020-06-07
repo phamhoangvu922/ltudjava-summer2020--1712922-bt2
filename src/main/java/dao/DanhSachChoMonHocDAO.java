@@ -1,5 +1,5 @@
 package dao;
-import util.HibernateUtil;
+import connection.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -13,7 +13,7 @@ public class DanhSachChoMonHocDAO {
         List<DanhSachChoMonHoc> ds = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            String hql = "select svmh from SinhvienMonhoc svmh "; //where svmh.monHoc=:monhoc
+            String hql = "select dscmh from DanhSachChoMonHoc dscmh "; //where dscmh.monHoc=:monhoc
             Query query = session.createQuery(hql);
 //            query.setString("monhoc", tenMonhoc);
             ds = query.list();
@@ -30,7 +30,8 @@ public class DanhSachChoMonHocDAO {
         List<DanhSachChoMonHoc> ds = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            String hql = "select svmh from SinhvienMonhoc svmh where svmh.id.monHoc=:monHoc and svmh.lop=:lop"; //where svmh.monHoc=:monHoc and svmh.lop=:lop
+            String hql = "select dscmh from DanhSachChoMonHoc dscmh where dscmh.id.monHoc=:monHoc and dscmh.lop=:lop";
+            //where dscmh.monHoc=:monHoc and dscmh.lop=:lop
             Query query = session.createQuery(hql);
             query.setString("monHoc", tenMonhoc);
             query.setString("lop", tenLop);
