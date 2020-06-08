@@ -5,17 +5,17 @@
     <class name="pojo.ThoiKhoaBieu" table="thoikhoabieu" catalog="quanlisinhvien" optimistic-lock="version">
         <composite-id name="id" class="pojo.IDThoiKhoaBieu">
             <key-property name="maMonHoc" type="string">
-                <column name="MaMonHoc" length="15" />
+                <column name="maMonHoc" length="15" />
             </key-property>
             <key-property name="lop" type="string">
-                <column name="Lop" length="10" />
+                <column name="lop" length="10" />
             </key-property>
         </composite-id>
         <property name="tenMonHoc" type="string">
-            <column name="TenMonHoc" length="50" />
+            <column name="tenMonHoc" length="50" />
         </property>
         <property name="phongHoc" type="string">
-            <column name="PhongHoc" length="5" />
+            <column name="phongHoc" length="5" />
         </property>
     </class>
 </hibernate-mapping>

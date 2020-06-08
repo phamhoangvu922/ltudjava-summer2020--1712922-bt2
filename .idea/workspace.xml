@@ -7,6 +7,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectId" id="1czIJKvlcBnGsow2Cr5eU5wJvNL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -42,10 +49,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="275" y="23" key="#Project_Structure" timestamp="1591531495106">
+    <state x="275" y="23" key="#Project_Structure" timestamp="1591614422498">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="23" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1591531495106" />
+    <state x="275" y="23" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1591614422498" />
     <state x="137" y="20" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591531873202">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -54,36 +61,29 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="412" y="149" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1591531871780" />
-    <state width="1323" height="358" key="GridCell.Tab.0.bottom" timestamp="1591538147748">
+    <state width="1323" height="2" key="GridCell.Tab.0.bottom" timestamp="1591628754520">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="358" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1591538147748" />
-    <state width="1323" height="358" key="GridCell.Tab.0.center" timestamp="1591538147748">
+    <state width="1323" height="2" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1591628754520" />
+    <state width="1323" height="2" key="GridCell.Tab.0.center" timestamp="1591628754520">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="358" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1591538147748" />
-    <state width="1323" height="358" key="GridCell.Tab.0.left" timestamp="1591538147748">
+    <state width="1323" height="2" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1591628754520" />
+    <state width="1323" height="2" key="GridCell.Tab.0.left" timestamp="1591628754520">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="358" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1591538147748" />
-    <state width="1323" height="358" key="GridCell.Tab.0.right" timestamp="1591538147748">
+    <state width="1323" height="2" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1591628754520" />
+    <state width="1323" height="2" key="GridCell.Tab.0.right" timestamp="1591628754520">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="358" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1591538147748" />
+    <state width="1323" height="2" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1591628754520" />
+    <state x="379" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1591608693828">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="379" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1591608693828" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1591531649915">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1591531649915" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/mainapp/Main.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

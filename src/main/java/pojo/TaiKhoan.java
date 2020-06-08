@@ -7,6 +7,11 @@ public class TaiKhoan implements Serializable {
     private String matKhauMacDinh;
     private String matKhau;
 
+    public TaiKhoan()
+    {
+
+    }
+
     public TaiKhoan(String mssv, String matKhauMacDinh, String matKhau) {
         this.mssv = mssv;
         this.matKhauMacDinh = matKhauMacDinh;

@@ -7,6 +7,11 @@ public class IDThoiKhoaBieu implements Serializable {
     private String maMonHoc;
     private String lop;
 
+    public  IDThoiKhoaBieu()
+    {
+
+    }
+
     public IDThoiKhoaBieu(String maMonHoc, String lop) {
         this.maMonHoc = maMonHoc;
         this.lop = lop;

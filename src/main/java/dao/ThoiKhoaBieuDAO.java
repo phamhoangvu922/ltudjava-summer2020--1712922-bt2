@@ -13,7 +13,7 @@ public class ThoiKhoaBieuDAO {
         List<ThoiKhoaBieu> ds = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            String hql = "select tkb from Thoikhoabieu tkb where tkb.id.lop=:lop";
+            String hql = "select tkb from ThoiKhoaBieu tkb where tkb.id.lop=:lop";
             Query query = session.createQuery(hql);
             query.setString("lop", tenLop);
             ds = query.list();

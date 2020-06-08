@@ -14,6 +14,7 @@
             jdbc:mysql://localhost:3306/quanlisinhvien?serverTimezone=UTC
         </property>
         <property name="hibernate.connection.username">root</property>
+
         <mapping resource="pojo/SinhVien.hbm.xml"/>
         <mapping resource="pojo/Diem.hbm.xml"/>
         <mapping resource="pojo/TaiKhoan.hbm.xml"/>

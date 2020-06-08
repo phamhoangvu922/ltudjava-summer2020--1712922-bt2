@@ -4,14 +4,14 @@
 <hibernate-mapping>
     <class name="pojo.TaiKhoan" table="taikhoan" catalog="quanlisinhvien" optimistic-lock="version">
         <id name="mssv" type="string">
-            <column name="MSSV" length="15" />
+            <column name="mssv" length="15" />
             <generator class="assigned" />
         </id>
         <property name="matKhauMacDinh" type="string">
-            <column name="MatKhauMacDinh" length="20" not-null="true" />
+            <column name="matKhauMacDinh" length="20" not-null="true" />
         </property>
         <property name="matKhau" type="string">
-            <column name="MatKhau" length="20" />
+            <column name="matKhau" length="20" />
         </property>
     </class>
 </hibernate-mapping>

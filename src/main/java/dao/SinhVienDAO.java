@@ -13,7 +13,7 @@ public class SinhVienDAO {
         List<SinhVien> ds = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            String hql = "select sv from Sinhvien sv";
+            String hql = "select sv from SinhVien sv";
             Query query = session.createQuery(hql);
             ds = query.list();
         } catch (HibernateException ex) {
@@ -29,7 +29,7 @@ public class SinhVienDAO {
         List<SinhVien> ds = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            String hql = "select sv from Sinhvien sv where sv.lop=:lop";
+            String hql = "select sv from SinhVien sv where sv.lop=:lop";
             Query query = session.createQuery(hql);
             query.setString("lop", tenLop);
             ds = query.list();
@@ -61,7 +61,7 @@ public class SinhVienDAO {
         SinhVien sv = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            String query = "select sv.mssv from Sinhvien sv where sv.mssv='" + maSinhVien + "' and sv.matkhau='" + matKhau + "'";
+            String query = "select sv.mssv from SinhVien sv where sv.mssv='" + maSinhVien + "' and sv.matkhau='" + matKhau + "'";
             sv = (SinhVien) session.get(query,sv);
         } catch (HibernateException ex) {
             //Log the exception

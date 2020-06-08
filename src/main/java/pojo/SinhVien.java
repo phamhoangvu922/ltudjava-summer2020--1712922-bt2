@@ -19,7 +19,7 @@ public class SinhVien implements Serializable {
         this.mssv = mssv;
     }
 
-    public SinhVien(String mssv, Integer stt, String hoTen, String gioiTinh, String cmnd, String lop,
+    public SinhVien(String mssv, int stt, String hoTen, String gioiTinh, String cmnd, String lop,
                     String matKhauMacDinh, String matKhau) {
         this.mssv = mssv;
         this.stt = stt;

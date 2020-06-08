@@ -6,6 +6,10 @@ public class IDDiem implements Serializable {
     private String lop;
     private String monHoc;
 
+    public IDDiem()
+    {
+
+    }
 
     public IDDiem(String mssv, String lop, String monHoc) {
         this.mssv = mssv;

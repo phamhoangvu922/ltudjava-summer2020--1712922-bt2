@@ -9,6 +9,10 @@ public class DanhSachChoMonHoc implements Serializable {
     private String cmnd;
     private String lop;
 
+    public  DanhSachChoMonHoc()
+    {
+
+    }
     public DanhSachChoMonHoc (IDDanhSachChoMonHoc id, String hoTen, String gioiTinh, String cmnd, String lop) {
         this.id = id;
         this.hoTen = hoTen;

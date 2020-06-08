@@ -7,6 +7,10 @@ public class ThoiKhoaBieu implements Serializable {
     private String tenMonHoc;
     private String phongHoc;
 
+    public ThoiKhoaBieu(){
+
+    }
+
     public ThoiKhoaBieu(IDThoiKhoaBieu id, String tenMonHoc, String phongHoc) {
         this.id = id;
         this.tenMonHoc = tenMonHoc;

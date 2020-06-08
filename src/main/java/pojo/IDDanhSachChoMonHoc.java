@@ -7,6 +7,10 @@ public class IDDanhSachChoMonHoc implements Serializable {
     private String monHoc;
 
 
+    public  IDDanhSachChoMonHoc()
+    {
+
+    }
     public IDDanhSachChoMonHoc(String mssv, String monHoc) {
         this.mssv = mssv;
         this.monHoc = monHoc;

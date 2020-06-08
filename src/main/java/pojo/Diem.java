@@ -10,6 +10,11 @@ public class Diem implements Serializable {
     private float diemKhac;
     private float diemTong;
 
+    public Diem()
+    {
+
+    }
+
     public Diem(IDDiem id, String hoTen, Float diemGk, Float diemCk, Float diemKhac, Float diemTong) {
         this.id = id;
         this.hoTen = hoTen;
