@@ -5,29 +5,29 @@
     <class name="pojo.Diem" table="diem" catalog="quanlisinhvien" optimistic-lock="version">
         <composite-id name="id" class="pojo.IDDiem">
             <key-property name="mssv" type="string">
-                <column name="MSSV" length="15" />
+                <column name="mssv" length="15" />
             </key-property>
             <key-property name="lop" type="string">
-                <column name="Lop" length="10" />
+                <column name="lop" length="10" />
             </key-property>
             <key-property name="monHoc" type="string">
-                <column name="MonHoc" length="50" />
+                <column name="monHoc" length="50" />
             </key-property>
         </composite-id>
         <property name="hoTen" type="string">
-            <column name="HoTen" length="50" />
+            <column name="hoTen" length="50" />
         </property>
         <property name="diemGk" type="float">
-            <column name="DiemGK" precision="12" scale="0" />
+            <column name="diemGK" precision="12" scale="0" />
         </property>
         <property name="diemCk" type="float">
-            <column name="DiemCK" precision="12" scale="0" />
+            <column name="diemCK" precision="12" scale="0" />
         </property>
         <property name="diemKhac" type="float">
-            <column name="DiemKhac" precision="12" scale="0" />
+            <column name="diemKhac" precision="12" scale="0" />
         </property>
         <property name="diemTong" type="float">
-            <column name="DiemTong" precision="12" scale="0" />
+            <column name="diemTong" precision="12" scale="0" />
         </property>
     </class>
 </hibernate-mapping>

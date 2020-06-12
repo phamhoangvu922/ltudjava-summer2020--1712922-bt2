@@ -22,6 +22,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -53,34 +54,42 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="23" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1591614422498" />
-    <state x="137" y="20" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591531873202">
+    <state x="137" y="20" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591795673467">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="137" y="20" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1591531873202" />
-    <state x="412" y="149" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1591531871780">
+    <state x="137" y="20" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1591795673467" />
+    <state x="488" y="81" key="#com.intellij.ide.util.MemberChooser" timestamp="1591971238930">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="412" y="149" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1591531871780" />
-    <state width="1323" height="2" key="GridCell.Tab.0.bottom" timestamp="1591628754520">
+    <state x="488" y="81" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1591971238930" />
+    <state x="412" y="149" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1591795671759">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1591628754520" />
-    <state width="1323" height="2" key="GridCell.Tab.0.center" timestamp="1591628754520">
+    <state x="412" y="149" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1591795671759" />
+    <state width="1323" height="9" key="GridCell.Tab.0.bottom" timestamp="1591968348023">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1591628754520" />
-    <state width="1323" height="2" key="GridCell.Tab.0.left" timestamp="1591628754520">
+    <state width="1323" height="9" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1591968348023" />
+    <state width="1323" height="9" key="GridCell.Tab.0.center" timestamp="1591968348023">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1591628754520" />
-    <state width="1323" height="2" key="GridCell.Tab.0.right" timestamp="1591628754520">
+    <state width="1323" height="9" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1591968348023" />
+    <state width="1323" height="9" key="GridCell.Tab.0.left" timestamp="1591968348023">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1591628754520" />
-    <state x="379" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1591608693828">
+    <state width="1323" height="9" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1591968348023" />
+    <state width="1323" height="9" key="GridCell.Tab.0.right" timestamp="1591968348023">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1591608693828" />
+    <state width="1323" height="9" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1591968348023" />
+    <state x="379" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1591968799268">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="379" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1591968799268" />
+    <state x="453" y="246" key="com.intellij.uiDesigner.propertyInspector.editors.string.StringEditorDialog" timestamp="1591795464721">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="453" y="246" key="com.intellij.uiDesigner.propertyInspector.editors.string.StringEditorDialog/0.0.1366.728@0.0.1366.728" timestamp="1591795464721" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1591531649915">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
