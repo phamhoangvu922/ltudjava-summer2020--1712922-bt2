@@ -8,9 +8,6 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Lop login = new Lop();
-        login.setVisible(true);
-        login.setSize(400, 200);
 
         /*DocFile df = new DocFile();
         List<ThoiKhoaBieu> lsv = df.readFileTKB("tkb_17hcb.csv");
