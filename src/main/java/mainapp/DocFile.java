@@ -1,6 +1,7 @@
 package mainapp;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class DocFile {
     }
 
 
-    public List<SinhVien> readFileSinhVien(String filePath) {
+    public List<SinhVien> readFileSinhVien(String filePath) throws FileNotFoundException, IOException {
         BufferedReader br = null;
         List<SinhVien> studentList =  new ArrayList<SinhVien>();
         try {
@@ -71,7 +72,7 @@ public class DocFile {
         }
         return studentList;
     }
-    public List<ThoiKhoaBieu> readFileTKB(String filePath) {
+    public List<ThoiKhoaBieu> readFileTKB(String filePath) throws FileNotFoundException, IOException {
         BufferedReader br = null;
         List<ThoiKhoaBieu> tkbList =  new ArrayList<ThoiKhoaBieu>();
         try {
@@ -103,7 +104,7 @@ public class DocFile {
         return tkbList;
     }
 
-    public List<Diem> readFileDiem(String filePath) {
+    public List<Diem> readFileDiem(String filePath) throws FileNotFoundException, IOException {
         BufferedReader br = null;
         List<Diem> diemList =  new ArrayList<Diem>();
         try {

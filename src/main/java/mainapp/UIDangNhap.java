@@ -1,4 +1,7 @@
 package mainapp;
+import dao.SinhVienDAO;
+import pojo.SinhVien;
+
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -53,7 +56,30 @@ public class UIDangNhap extends JFrame implements ActionListener {
         buttonDangNhap.addActionListener(this);
     }
     public void actionPerformed(ActionEvent e) {
-
+        if(e.getSource() == buttonDangNhap){
+            String tk = txtUsername.getText().toString();
+            char[] pass = txtPassword.getPassword();
+            String mk = new String(pass);
+            SinhVien sv = SinhVienDAO.layThongTinSinhVien(tk);
+            if(sv!= null){
+                if( mk.equals(sv.getMatKhau())){
+                    System.out.println("Đăng nhập thành công");
+//                    JOptionPane.showMessageDialog(null,"Đăng nhập thành công !!!");
+                    //main
+                    UITrangChu swing = new UITrangChu("Main");
+                    swing.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    swing.setVisible(true);
+                    swing.setSize(800, 700);
+                    this.setVisible(false);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Đăng nhập thất bại !!!");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Tài khoản không tồn tại !!!");
+                System.out.println("Tài khoản không tồn tại");
+            }
+        }
     }
 }
 

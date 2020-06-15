@@ -6,9 +6,9 @@ import pojo.Diem;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.GridLayout;
 import java.util.List;
 
 
@@ -48,6 +48,7 @@ public class UIDSDiem  extends JPanel implements ActionListener  {
         txtSubject.setBounds(420, 20, 200, 30);
 
         btnSelect = new JButton("Tìm kiếm");
+        btnSelect.setBackground(Color.lightGray);
         btnSelect.setBounds(650, 20, 100, 30);
 
         pnSelect.add(lblClass);
@@ -66,8 +67,8 @@ public class UIDSDiem  extends JPanel implements ActionListener  {
         pnListSV.add(jspDSDiem);
 
 
-        pnInput.setBounds(10, 20, 765, 150);
-        pnListSV.setBounds(10, 180, 765, 400);
+        pnInput.setBounds(10, 20, 765, 80);
+        pnListSV.setBounds(10, 100, 765, 500);
         pnScore.add(pnInput);
         pnScore.add(pnListSV);
 
@@ -116,6 +117,8 @@ public class UIDSDiem  extends JPanel implements ActionListener  {
     }
 
     public void actionPerformed(ActionEvent e) {
-
+        if(e.getSource() == btnSelect){
+            getDanhSachDiem(txtClass.getText(), txtSubject.getText());
+        }
     }
 }

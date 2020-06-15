@@ -1,6 +1,7 @@
 package mainapp;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
@@ -10,14 +11,14 @@ public class UITrangChu extends JFrame {
     JMenuItem jmiImport, jmiTKB, jmiClSub,jmiClassList, jmiClSubList, jmiTKBList, jimScoreImp, jimScoreList;
     JPanel pnMain;
     JLabel lbFile;
-    JButton btnSelect, btnImport, btnExit;
+    JButton btnLogout;
     public UITrangChu(String tieuDe){
         super(tieuDe);
         jmbMain = new JMenuBar();
-        jmClass = new JMenu("Lớp học");
-        jmSchedule = new JMenu("Thời Khoá Biểu");
-        jmClassSubject = new JMenu("Lớp Môn Học");
-        jmScore = new JMenu("Điểm");
+        jmClass = new JMenu("Quản lí Lớp");
+        jmSchedule = new JMenu("Quản lí Thời Khoá Biểu");
+        jmClassSubject = new JMenu("Quản lí Lớp Môn Học");
+        jmScore = new JMenu("Quản lí Điểm");
         jmLogout = new JMenu(new AbstractAction("Đăng xuất") {
             public void actionPerformed(ActionEvent e) {
                 UIDangNhap login = new UIDangNhap("Login");
@@ -26,6 +27,7 @@ public class UITrangChu extends JFrame {
                 login.setSize(400, 200);
             }
         });
+
 //        //Class
         UILop lp = new UILop();
         JPanel pnClass = lp.Import();
@@ -66,6 +68,8 @@ public class UITrangChu extends JFrame {
         pnMain.add(pnScoreList, "ScoreList");
 
         final CardLayout cl = (CardLayout) (pnMain.getLayout());
+
+
         jmiImport = new JMenuItem(new AbstractAction("Import danh sách lớp") {
             public void actionPerformed(ActionEvent e) {
                 cl.show(pnMain, "Class");
@@ -126,7 +130,9 @@ public class UITrangChu extends JFrame {
         jmbMain.add(jmSchedule);
         jmbMain.add(jmClassSubject);
         jmbMain.add(jmScore);
+        jmbMain.add(jmLogout);
         this.setJMenuBar(jmbMain);
         this.add(pnMain);
     }
+
 }

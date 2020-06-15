@@ -9,6 +9,10 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
+        UITrangChu login = new UITrangChu("Trang chủ");
+        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        login.setVisible(true);
+        login.setSize(800, 700);
         /*DocFile df = new DocFile();
         List<ThoiKhoaBieu> lsv = df.readFileTKB("tkb_17hcb.csv");
         for (int i = 0; i < lsv.size(); i++) {

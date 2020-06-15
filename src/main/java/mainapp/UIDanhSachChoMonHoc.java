@@ -1,11 +1,13 @@
 package mainapp;
 import dao.DanhSachChoMonHocDAO;
+import pojo.DanhSachChoMonHoc;
+import pojo.IDDanhSachChoMonHoc;
 import pojo.SinhVien;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -23,13 +25,13 @@ public class UIDanhSachChoMonHoc extends JPanel implements ActionListener {
         pnClass = new JPanel();
         TitledBorder titleClass = new TitledBorder("Danh sách lớp môn học");
         pnClass.setBorder(titleClass);
-        pnClass.setLayout(new GridLayout(2, 1));
+        pnClass.setLayout(new GridLayout(1, 3));
 
-        JPanel pnInput = new JPanel();
-        pnInput.setLayout(new GridLayout(1, 2));
+        //JPanel pnInput = new JPanel();
+        //pnInput.setLayout(new GridLayout(1, 2));
 
         JPanel pnCreate = new JPanel();
-        pnCreate.setLayout(new GridLayout(10, 2, 2, 2));
+        pnCreate.setLayout(new GridLayout(15, 2, 2, 2));
         TitledBorder titleCreate = new TitledBorder("Thêm mới");
         pnCreate.setBorder(titleCreate);
         JLabel lblClassCre = new JLabel("Tên lớp");
@@ -45,6 +47,7 @@ public class UIDanhSachChoMonHoc extends JPanel implements ActionListener {
         JLabel lblCMNDCre = new JLabel("CMND");
         txtCMNDCre = new JTextField(20);
         btnCreate = new JButton("Lưu");
+        btnCreate.setBackground(Color.lightGray);
         pnCreate.add(lblClassCre);
         pnCreate.add(txtClassCre);
         pnCreate.add(lblSubjectCre);
@@ -58,10 +61,10 @@ public class UIDanhSachChoMonHoc extends JPanel implements ActionListener {
         pnCreate.add(lblCMNDCre);
         pnCreate.add(txtCMNDCre);
         pnCreate.add(btnCreate);
-        pnInput.add(pnCreate);
+        //pnInput.add(pnCreate);
 
         JPanel pnDelete = new JPanel();
-        pnDelete.setLayout(new GridLayout(11, 2, 2, 2));
+        pnDelete.setLayout(new GridLayout(15, 2, 2, 2));
         TitledBorder titleDelete = new TitledBorder("Xoá sinh viên");
         pnDelete.setBorder(titleDelete);
 //        JLabel lblClassDel = new JLabel("Tên lớp");
@@ -71,6 +74,7 @@ public class UIDanhSachChoMonHoc extends JPanel implements ActionListener {
         JLabel lblMSSVDel = new JLabel("Mã sinh viên");
         txtMSSVDel = new JTextField(20);
         btnDelete = new JButton("Xoá");
+        btnDelete.setBackground(Color.lightGray);
 //        pnDelete.add(lblClassDel);
 //        pnDelete.add(txtClassDel);
         pnDelete.add(lblSubjectDel);
@@ -78,7 +82,7 @@ public class UIDanhSachChoMonHoc extends JPanel implements ActionListener {
         pnDelete.add(lblMSSVDel);
         pnDelete.add(txtMSSVDel);
         pnDelete.add(btnDelete);
-        pnInput.add(pnDelete);
+        //pnInput.add(pnDelete);
 
         JPanel pnListSV = new JPanel();
         TitledBorder titleLitsSV = new TitledBorder("Danh sách lớp môn học");
@@ -88,7 +92,9 @@ public class UIDanhSachChoMonHoc extends JPanel implements ActionListener {
         jspDSLop = new JScrollPane(table);
         pnListSV.add(jspDSLop);
 
-        pnClass.add(pnInput);
+        //pnClass.add(pnInput);
+        pnClass.add(pnCreate);
+        pnClass.add(pnDelete);
         pnClass.add(pnListSV);
 
         //Add function
@@ -100,6 +106,30 @@ public class UIDanhSachChoMonHoc extends JPanel implements ActionListener {
 
 
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == btnCreate){
+            if (!txtSubjectCre.getText().isEmpty() &&!txtStudentIDCre.getText().isEmpty() && !txtStudentNameCre.getText().isEmpty() && !txtClassCre.getText().isEmpty()) {
+                IDDanhSachChoMonHoc svId = new IDDanhSachChoMonHoc(txtStudentIDCre.getText(), txtSubjectCre.getText()) ;
+                DanhSachChoMonHoc svmh = new DanhSachChoMonHoc(svId, txtStudentNameCre.getText(), txtGenderCre.getText(), txtCMNDCre.getText(), txtClassCre.getText());
+                boolean create = DanhSachChoMonHocDAO.themSinhVienMonHoc(svmh);
+                if(create){
+                //    getDanhSachLopMonHoc(txtSubjectCre.getText());
+                    JOptionPane.showMessageDialog(null, "Thêm thành công !!!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Thêm thất bại !!!");
+                }
+            }
+        }
 
+        if(e.getSource() == btnDelete){
+            if (!txtMSSVDel.getText().isEmpty() &&!txtSubjectDel.getText().isEmpty() ) {
+                boolean del = DanhSachChoMonHocDAO.xoaSinhVienMonHoc(txtSubjectDel.getText(), txtMSSVDel.getText());
+                if(del){
+                   // getDanhSachLopMonHoc(txtSubjectDel.getText());
+                    JOptionPane.showMessageDialog(null, "Xoá thành công !!!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Xoá thất bại !!!");
+                }
+            }
+        }
     }
 }

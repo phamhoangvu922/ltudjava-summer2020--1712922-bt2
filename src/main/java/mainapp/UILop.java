@@ -1,10 +1,21 @@
 package mainapp;
 
+import dao.SinhVienDAO;
+import pojo.SinhVien;
+
+import javax.print.Doc;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileSystemView;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UILop extends JPanel implements ActionListener {
     JPanel pnClass;
@@ -12,35 +23,38 @@ public class UILop extends JPanel implements ActionListener {
     JTable table;
     JScrollPane jspDSLop;
     JTextField txtClassImp, txtClassCre, txtStudentIDCre, txtStudentNameCre, txtGenderCre, txtCMNDCre;
+    File selectedFile;
     public JPanel Import() {
         //Class
         pnClass = new JPanel();
-        TitledBorder titleClass = new TitledBorder("Danh sách lớp");
-        pnClass.setBorder(titleClass);
-        pnClass.setLayout(new GridLayout(2, 1));
+        //TitledBorder titleClass = new TitledBorder("Danh sách lớp");
+       // pnClass.setBorder(titleClass);
+        pnClass.setLayout(new GridLayout(1, 3));
 
-        JPanel pnInput = new JPanel();
-        pnInput.setLayout(new GridLayout(1, 2));
+        //JPanel pnInput = new JPanel();
+        //pnInput.setLayout(new GridLayout(1, 2));
 
 
         JPanel pnImport = new JPanel();
         pnImport.setLayout(new GridLayout(10, 2, 2, 2));
-        TitledBorder titleImport = new TitledBorder("Import");
+        TitledBorder titleImport = new TitledBorder("Import danh sách lớp mới");
         pnImport.setBorder(titleImport);
 
-        JLabel lblClassImp = new JLabel("Tên lớp");
-        txtClassImp = new JTextField(20);
+        //JLabel lblClassImp = new JLabel("Tên lớp");
+        //txtClassImp = new JTextField(20);
         btnSelect = new JButton("Chọn file");
+        btnSelect.setBackground(Color.lightGray);
         btnImport = new JButton("Import");
-        pnImport.add(lblClassImp);
-        pnImport.add(txtClassImp);
+        btnImport.setBackground(Color.lightGray);
+        //pnImport.add(lblClassImp);
+        //pnImport.add(txtClassImp);
         pnImport.add(btnSelect);
         pnImport.add(btnImport);
-        pnInput.add(pnImport);
+        //pnInput.add(pnImport);
 
         JPanel pnCreate = new JPanel();
         pnCreate.setLayout(new GridLayout(11, 2, 2, 2));
-        TitledBorder titleCreate = new TitledBorder("Thêm mới");
+        TitledBorder titleCreate = new TitledBorder("Thêm sinh viên mới");
         pnCreate.setBorder(titleCreate);
         JLabel lblClassCre = new JLabel("Tên lớp");
         txtClassCre = new JTextField(20);
@@ -53,6 +67,7 @@ public class UILop extends JPanel implements ActionListener {
         JLabel lblCMNDCre = new JLabel("CMND");
         txtCMNDCre = new JTextField(20);
         btnCreate = new JButton("Lưu");
+        btnCreate.setBackground(Color.lightGray);
         pnCreate.add(lblClassCre);
         pnCreate.add(txtClassCre);
         pnCreate.add(lblStudentIDCre);
@@ -64,17 +79,19 @@ public class UILop extends JPanel implements ActionListener {
         pnCreate.add(lblCMNDCre);
         pnCreate.add(txtCMNDCre);
         pnCreate.add(btnCreate);
-        pnInput.add(pnCreate);
+        //pnInput.add(pnCreate);
 
         JPanel pnListSV = new JPanel();
-        TitledBorder titleLitsSV = new TitledBorder("Danh sách lớp");
+        TitledBorder titleLitsSV = new TitledBorder("Danh sách lớp đã tồn tại");
         pnListSV.setBorder(titleLitsSV);
         pnListSV.setLayout(new GridLayout(1, 1));
         table = new JTable();
         jspDSLop = new JScrollPane(table);
         pnListSV.add(jspDSLop);
 
-        pnClass.add(pnInput);
+        //pnClass.add(pnInput);
+        pnClass.add(pnImport);
+        pnClass.add(pnCreate);
         pnClass.add(pnListSV);
 
         //Add function
@@ -84,6 +101,40 @@ public class UILop extends JPanel implements ActionListener {
         return pnClass;
     }
     public void actionPerformed(ActionEvent e) {
-
+        if(e.getSource() == btnSelect){
+            JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+            int returnValue = jfc.showOpenDialog(UILop.this);
+            // int returnValue = jfc.showSaveDialog(null);
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                selectedFile = jfc.getSelectedFile();
+                System.out.println(selectedFile.getAbsolutePath());
+            }
+        }
+        if(e.getSource() == btnImport){
+            if (!txtClassImp.getText().isEmpty() && selectedFile != null) {
+                String pathInput = selectedFile.getAbsolutePath();
+                DocFile rf = new DocFile();
+                try {
+                    rf.readFileSinhVien(pathInput);
+//                    getDanhSachSV(txtClassImp.getText());
+                } catch (IOException ex) {
+                    Logger.getLogger(UITrangChu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Hãy nhập đầy đủ thông tin !!!");
+            }
+        }
+        if(e.getSource() == btnCreate){
+            if (!txtStudentIDCre.getText().isEmpty() && !txtStudentNameCre.getText().isEmpty() && !txtClassCre.getText().isEmpty()) {
+                SinhVien sv = new SinhVien(txtStudentIDCre.getText(), 200, txtStudentNameCre.getText(), txtGenderCre.getText(), txtCMNDCre.getText(), txtClassCre.getText(), null, null);
+                boolean create = SinhVienDAO.themSinhVien(sv);
+                if(create){
+                  //  getDanhSachSV(txtClassCre.getText());
+                    JOptionPane.showMessageDialog(null, "Thêm thành công !!!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Thêm thất bại !!!");
+                }
+            }
+        }
     }
 }
