@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
 import java.util.List;
 
 public class UIDSLop extends JPanel implements ActionListener {
@@ -72,7 +73,7 @@ public class UIDSLop extends JPanel implements ActionListener {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columns);
 
-        List<SinhVien> listStudents = null;
+        List<SinhVien> listStudents = new ArrayList<SinhVien>();
         listStudents = SinhVienDAO.layDanhSachSinhVienTheoLop(className);
         for (SinhVien sv : listStudents)
         {

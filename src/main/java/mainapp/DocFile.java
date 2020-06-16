@@ -49,17 +49,17 @@ public class DocFile {
             while ((line = br.readLine()) != null) {
                 List<String> result = new ArrayList<String>();
                 result = parseCsvLine(line);
-                String mssv = result.get(0);
-                int stt = Integer.parseInt(result.get(1));
+                String mssv = result.get(1);
                 String hoTen = result.get(2);
                 String gioiTinh = result.get(3);
                 String cmnd = result.get(4);
                 String matKhauMacDinh = result.get(4);
-                String matkhau = "";
+                String matkhau = result.get(4);
                 int i =0;
-                SinhVien temp = new SinhVien(mssv,stt,hoTen,gioiTinh,cmnd,lop,matKhauMacDinh,matkhau);
+                SinhVien temp = new SinhVien(mssv,hoTen,gioiTinh,cmnd,lop,matKhauMacDinh,matkhau);
                 studentList.add(temp);
             }
+            System.out.println("Đọc file thành công");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

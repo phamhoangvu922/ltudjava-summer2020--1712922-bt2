@@ -29,7 +29,7 @@ public class UILop extends JPanel implements ActionListener {
         pnClass = new JPanel();
         //TitledBorder titleClass = new TitledBorder("Danh sách lớp");
        // pnClass.setBorder(titleClass);
-        pnClass.setLayout(new GridLayout(1, 3));
+        pnClass.setLayout(new GridLayout(2, 2));
 
         //JPanel pnInput = new JPanel();
         //pnInput.setLayout(new GridLayout(1, 2));
@@ -40,7 +40,7 @@ public class UILop extends JPanel implements ActionListener {
         TitledBorder titleImport = new TitledBorder("Import danh sách lớp mới");
         pnImport.setBorder(titleImport);
 
-        //JLabel lblClassImp = new JLabel("Tên lớp");
+        //JLabel lblClassImp = new JLabel("Đường dẫn");
         //txtClassImp = new JTextField(20);
         btnSelect = new JButton("Chọn file");
         btnSelect.setBackground(Color.lightGray);
@@ -81,18 +81,10 @@ public class UILop extends JPanel implements ActionListener {
         pnCreate.add(btnCreate);
         //pnInput.add(pnCreate);
 
-        JPanel pnListSV = new JPanel();
-        TitledBorder titleLitsSV = new TitledBorder("Danh sách lớp đã tồn tại");
-        pnListSV.setBorder(titleLitsSV);
-        pnListSV.setLayout(new GridLayout(1, 1));
-        table = new JTable();
-        jspDSLop = new JScrollPane(table);
-        pnListSV.add(jspDSLop);
 
         //pnClass.add(pnInput);
         pnClass.add(pnImport);
         pnClass.add(pnCreate);
-        pnClass.add(pnListSV);
 
         //Add function
         btnSelect.addActionListener(this);
@@ -111,11 +103,19 @@ public class UILop extends JPanel implements ActionListener {
             }
         }
         if(e.getSource() == btnImport){
-            if (!txtClassImp.getText().isEmpty() && selectedFile != null) {
+            if (selectedFile != null) {
                 String pathInput = selectedFile.getAbsolutePath();
                 DocFile rf = new DocFile();
                 try {
-                    rf.readFileSinhVien(pathInput);
+                    List <SinhVien> lsv = rf.readFileSinhVien(pathInput);
+                    for (int i = 0; i < lsv.size(); i++) {
+                        boolean done;
+                        done = SinhVienDAO.themSinhVien(lsv.get(i));
+                        if (done == false)
+                        {
+                            System.out.println("Thêm TKB thất bại");
+                        }
+                    }
 //                    getDanhSachSV(txtClassImp.getText());
                 } catch (IOException ex) {
                     Logger.getLogger(UITrangChu.class.getName()).log(Level.SEVERE, null, ex);
@@ -126,7 +126,7 @@ public class UILop extends JPanel implements ActionListener {
         }
         if(e.getSource() == btnCreate){
             if (!txtStudentIDCre.getText().isEmpty() && !txtStudentNameCre.getText().isEmpty() && !txtClassCre.getText().isEmpty()) {
-                SinhVien sv = new SinhVien(txtStudentIDCre.getText(), 200, txtStudentNameCre.getText(), txtGenderCre.getText(), txtCMNDCre.getText(), txtClassCre.getText(), null, null);
+                SinhVien sv = new SinhVien(txtStudentIDCre.getText(), txtStudentNameCre.getText(), txtGenderCre.getText(), txtCMNDCre.getText(), txtClassCre.getText(), null, null);
                 boolean create = SinhVienDAO.themSinhVien(sv);
                 if(create){
                   //  getDanhSachSV(txtClassCre.getText());

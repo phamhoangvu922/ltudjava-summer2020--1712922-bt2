@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="pojo.Diem" table="diem" catalog="quanlisinhvien" optimistic-lock="version">
+    <class name="pojo.Diem" table="diem" catalog="quanlysinhvien" optimistic-lock="version">
         <composite-id name="id" class="pojo.IDDiem">
             <key-property name="mssv" type="string">
                 <column name="mssv" length="15" />

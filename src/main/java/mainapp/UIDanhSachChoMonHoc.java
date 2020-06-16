@@ -25,7 +25,7 @@ public class UIDanhSachChoMonHoc extends JPanel implements ActionListener {
         pnClass = new JPanel();
         TitledBorder titleClass = new TitledBorder("Danh sách lớp môn học");
         pnClass.setBorder(titleClass);
-        pnClass.setLayout(new GridLayout(1, 3));
+        pnClass.setLayout(new GridLayout(2, 2));
 
         //JPanel pnInput = new JPanel();
         //pnInput.setLayout(new GridLayout(1, 2));
@@ -84,18 +84,10 @@ public class UIDanhSachChoMonHoc extends JPanel implements ActionListener {
         pnDelete.add(btnDelete);
         //pnInput.add(pnDelete);
 
-        JPanel pnListSV = new JPanel();
-        TitledBorder titleLitsSV = new TitledBorder("Danh sách lớp môn học");
-        pnListSV.setBorder(titleLitsSV);
-        pnListSV.setLayout(new GridLayout(1, 1));
-        table = new JTable();
-        jspDSLop = new JScrollPane(table);
-        pnListSV.add(jspDSLop);
 
         //pnClass.add(pnInput);
         pnClass.add(pnCreate);
         pnClass.add(pnDelete);
-        pnClass.add(pnListSV);
 
         //Add function
         btnCreate.addActionListener(this);

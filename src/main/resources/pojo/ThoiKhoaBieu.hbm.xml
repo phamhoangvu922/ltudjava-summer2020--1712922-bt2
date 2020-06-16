@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="pojo.ThoiKhoaBieu" table="thoikhoabieu" catalog="quanlisinhvien" optimistic-lock="version">
+    <class name="pojo.ThoiKhoaBieu" table="thoikhoabieu" catalog="quanlysinhvien" optimistic-lock="version">
         <composite-id name="id" class="pojo.IDThoiKhoaBieu">
             <key-property name="maMonHoc" type="string">
                 <column name="maMonHoc" length="15" />

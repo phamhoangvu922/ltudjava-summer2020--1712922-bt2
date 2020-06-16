@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="pojo.PhucKhao" table="phuckhao" catalog="quanlysinhvien" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="mssv" type="string">
+            <column name="mssv" length="15" not-null="true" />
+        </property>
+        <property name="hoTen" type="string">
+            <column name="hoTen" length="45" />
+        </property>
+        <property name="monHoc" type="string">
+            <column name="monHoc" length="45"/>
+        </property>
+        <property name="cotDiem" type="string">
+            <column name="cotDiem" length="45"/>
+        </property>
+        <property name="diemMongMuon" type="java.lang.Double">
+            <column name="diemMongMuon" precision="255" scale="0" />
+        </property>
+        <property name="lyDo" type="string">
+            <column name="lyDo" length="65535" />
+        </property>
+        <property name="trangThai" type="string">
+            <column name="trangThai" length="255"/>
+        </property>
+        <property name="idBangPhucKhao" type="int">
+            <column name="idBangPhucKhao" length="11"/>
+        </property>
+    </class>
+</hibernate-mapping>

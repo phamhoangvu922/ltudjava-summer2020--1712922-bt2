@@ -34,10 +34,10 @@ public class UIDangNhap extends JFrame implements ActionListener {
 
         //text field
         txtUsername = new JTextField();
-        txtUsername.setText("ví dụ: 1712001");
+        txtUsername.setText("");
         txtUsername.setBounds(115, 20, 250, 30);
         txtPassword = new JPasswordField();
-        txtPassword.setText("ví dụ: 123456");
+        txtPassword.setText("");
         txtPassword.setBounds(115, 60, 250, 30);
 
         buttonDangNhap = new JButton();
@@ -60,13 +60,21 @@ public class UIDangNhap extends JFrame implements ActionListener {
             String tk = txtUsername.getText().toString();
             char[] pass = txtPassword.getPassword();
             String mk = new String(pass);
-            SinhVien sv = SinhVienDAO.layThongTinSinhVien(tk);
-            if(sv!= null){
+            if(tk.equals("admin") && mk.equals("admin12345")  )
+            {
+                UITrangChu swing = new UITrangChu("Main");
+                swing.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                swing.setVisible(true);
+                swing.setSize(800, 700);
+                this.setVisible(false);
+            }
+            else if(SinhVienDAO.layThongTinSinhVien(tk)!= null){
+                SinhVien sv = SinhVienDAO.layThongTinSinhVien(tk);
                 if( mk.equals(sv.getMatKhau())){
                     System.out.println("Đăng nhập thành công");
 //                    JOptionPane.showMessageDialog(null,"Đăng nhập thành công !!!");
                     //main
-                    UITrangChu swing = new UITrangChu("Main");
+                    UITrangChuSinhVien swing = new UITrangChuSinhVien("Main", tk);
                     swing.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     swing.setVisible(true);
                     swing.setSize(800, 700);
@@ -75,7 +83,8 @@ public class UIDangNhap extends JFrame implements ActionListener {
                 else{
                     JOptionPane.showMessageDialog(null,"Đăng nhập thất bại !!!");
                 }
-            }else{
+            }
+            else{
                 JOptionPane.showMessageDialog(null,"Tài khoản không tồn tại !!!");
                 System.out.println("Tài khoản không tồn tại");
             }

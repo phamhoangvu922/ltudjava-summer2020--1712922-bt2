@@ -11,8 +11,11 @@
             com.mysql.jdbc.Driver
         </property>
         <property name="hibernate.connection.url">
-            jdbc:mysql://localhost:3306/quanlisinhvien?serverTimezone=UTC
+            jdbc:mysql://localhost:3306/quanlysinhvien?serverTimezone=UTC
         </property>
+        <property name="hibernate.connection.CharSet">utf8</property>
+        <property name="hibernate.connection.characterEncoding">utf8</property>
+        <property name="hibernate.connection.useUnicode">true</property>
         <property name="hibernate.connection.username">root</property>
 
         <mapping resource="pojo/SinhVien.hbm.xml"/>
@@ -20,6 +23,9 @@
         <mapping resource="pojo/TaiKhoan.hbm.xml"/>
         <mapping resource="pojo/ThoiKhoaBieu.hbm.xml"/>
         <mapping resource="pojo/DanhSachChoMonHoc.hbm.xml"/>
+        <mapping resource="pojo/BangPhucKhao.hbm.xml"/>
+        <mapping resource="pojo/PhucKhao.hbm.xml"/>
+
 
     </session-factory>
 </hibernate-configuration>

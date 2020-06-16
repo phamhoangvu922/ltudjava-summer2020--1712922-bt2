@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojo.BangPhucKhao" table="bangphuckhao" catalog="quanlysinhvien" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="hocKy" type="string">
+            <column name="HocKy" length="50" />
+        </property>
+        <property name="namHoc" type="string">
+            <column name="NamHoc" length="50" />
+        </property>
+
+        <property name="ngayBatDau" type="string">
+            <column name="NgayBatDau" length="19" />
+        </property>
+        <property name="ngayKetThuc" type="string">
+            <column name="NgayKetThuc" length="19" />
+        </property>
+        <property name="trangThai" type="int">
+            <column name="TrangThai"/>
+        </property>
+    </class>
+</hibernate-mapping>

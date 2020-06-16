@@ -27,10 +27,10 @@ public class UIDiem  extends JPanel implements ActionListener {
         pnScore = new JPanel();
         TitledBorder titleClass = new TitledBorder("Danh sách lớp");
         pnScore.setBorder(titleClass);
-        pnScore.setLayout(new GridLayout(2, 1));
+        pnScore.setLayout(new GridLayout(2, 2));
 
-        JPanel pnInput = new JPanel();
-        pnInput.setLayout(new GridLayout(1, 2));
+       // JPanel pnInput = new JPanel();
+        //pnInput.setLayout(new GridLayout(1, 1));
 
 
         JPanel pnImport = new JPanel();
@@ -38,21 +38,21 @@ public class UIDiem  extends JPanel implements ActionListener {
         TitledBorder titleImport = new TitledBorder("Import");
         pnImport.setBorder(titleImport);
 
-        JLabel lblClassImp = new JLabel("Tên lớp");
-        txtClassImp = new JTextField(20);
-        JLabel lblSubjectImp = new JLabel("Tên môn học");
-        txtSubjectImp = new JTextField(20);
+        //JLabel lblClassImp = new JLabel("Tên lớp");
+        //txtClassImp = new JTextField(20);
+        //JLabel lblSubjectImp = new JLabel("Tên môn học");
+        //txtSubjectImp = new JTextField(20);
         btnSelect = new JButton("Chọn file");
         btnSelect.setBackground(Color.lightGray);
         btnImport = new JButton("Import");
         btnImport.setBackground(Color.lightGray);
-        pnImport.add(lblClassImp);
-        pnImport.add(txtClassImp);
-        pnImport.add(lblSubjectImp);
-        pnImport.add(txtSubjectImp);
+        //pnImport.add(lblClassImp);
+        //pnImport.add(txtClassImp);
+        //pnImport.add(lblSubjectImp);
+        //pnImport.add(txtSubjectImp);
         pnImport.add(btnSelect);
         pnImport.add(btnImport);
-        pnInput.add(pnImport);
+        //pnInput.add(pnImport);
 
         JPanel pnCreate = new JPanel();
         pnCreate.setLayout(new GridLayout(11, 2, 2, 2));
@@ -81,18 +81,10 @@ public class UIDiem  extends JPanel implements ActionListener {
         pnCreate.add(lblCMNDCre);
         pnCreate.add(txtCMNDCre);
         pnCreate.add(btnCreate);
-        pnInput.add(pnCreate);
+        //pnInput.add(pnCreate);
 
-        JPanel pnListScore = new JPanel();
-        TitledBorder titleLitsScore = new TitledBorder("Danh sách điểm");
-        pnListScore.setBorder(titleLitsScore);
-        pnListScore.setLayout(new GridLayout(1, 1));
-        table = new JTable();
-        jspDSLop = new JScrollPane(table);
-        pnListScore.add(jspDSLop);
-
-        pnScore.add(pnInput);
-        pnScore.add(pnListScore);
+        pnScore.add(pnImport);
+        pnScore.add(pnCreate);
 
         //Add function
         btnSelect.addActionListener(this);
@@ -111,7 +103,7 @@ public class UIDiem  extends JPanel implements ActionListener {
             }
         }
         if(e.getSource() == btnImport){
-            if (!txtClassImp.getText().isEmpty() && selectedFile != null) {
+            if (selectedFile != null) {
                 String pathInput = selectedFile.getAbsolutePath();
                 try {
                     DocFile df = new DocFile();
@@ -126,7 +118,7 @@ public class UIDiem  extends JPanel implements ActionListener {
         }
         if(e.getSource() == btnCreate){
             if (!txtStudentIDCre.getText().isEmpty() && !txtStudentNameCre.getText().isEmpty() && !txtClassCre.getText().isEmpty()) {
-                SinhVien sv = new SinhVien(txtStudentIDCre.getText(), 123, txtStudentNameCre.getText(),
+                SinhVien sv = new SinhVien(txtStudentIDCre.getText(), txtStudentNameCre.getText(),
                         txtGenderCre.getText(), txtCMNDCre.getText(), txtClassCre.getText(), null, null);
                 boolean create = SinhVienDAO.themSinhVien(sv);
                 if(create){

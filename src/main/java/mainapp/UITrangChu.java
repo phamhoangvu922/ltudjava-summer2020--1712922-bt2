@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 
 public class UITrangChu extends JFrame {
     JMenuBar jmbMain;
-    JMenu jmClass, jmSchedule, jmLogout,jmClassSubject, jmScore;
+    JMenu jmClass, jmSchedule,jmClassSubject, jmScore;
     JMenuItem jmiImport, jmiTKB, jmiClSub,jmiClassList, jmiClSubList, jmiTKBList, jimScoreImp, jimScoreList;
     JPanel pnMain;
     JLabel lbFile;
@@ -19,12 +19,10 @@ public class UITrangChu extends JFrame {
         jmSchedule = new JMenu("Quản lí Thời Khoá Biểu");
         jmClassSubject = new JMenu("Quản lí Lớp Môn Học");
         jmScore = new JMenu("Quản lí Điểm");
-        jmLogout = new JMenu(new AbstractAction("Đăng xuất") {
-            public void actionPerformed(ActionEvent e) {
-                UIDangNhap login = new UIDangNhap("Login");
-                login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                login.setVisible(true);
-                login.setSize(400, 200);
+        btnLogout = new JButton("Đăng xuất");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
             }
         });
 
@@ -130,9 +128,17 @@ public class UITrangChu extends JFrame {
         jmbMain.add(jmSchedule);
         jmbMain.add(jmClassSubject);
         jmbMain.add(jmScore);
-        jmbMain.add(jmLogout);
+        jmbMain.add(btnLogout);
         this.setJMenuBar(jmbMain);
         this.add(pnMain);
     }
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        UIDangNhap login = new UIDangNhap("Login");
+        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        login.setVisible(true);
+        login.setSize(400, 200);
+        this.dispose();
+    }
 }

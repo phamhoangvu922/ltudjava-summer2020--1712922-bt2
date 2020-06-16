@@ -55,18 +55,9 @@ public class UIThoiKhoaBieu extends JPanel implements ActionListener {
         pnInput.add(pnImport);
 
 
-        JPanel pnListSV = new JPanel();
-        TitledBorder titleLitsSV = new TitledBorder("Danh sách thời khoá biểu");
-        pnListSV.setBorder(titleLitsSV);
-        pnListSV.setLayout(new GridLayout(1, 1));
-        table = new JTable();
-        jspDSLop = new JScrollPane(table);
-        pnListSV.add(jspDSLop);
 
         pnInput.setBounds(10, 20, 765, 80);
-        pnListSV.setBounds(10, 100, 765, 500);
         pnClass.add(pnInput);
-        pnClass.add(pnListSV);
 
         //Add function
         btnSelect.addActionListener(this);

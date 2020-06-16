@@ -3,7 +3,6 @@ import java.io.Serializable;
 
 public class SinhVien implements Serializable {
     private String mssv;
-    private int stt;
     private String hoTen;
     private String gioiTinh;
     private String cmnd;
@@ -19,10 +18,9 @@ public class SinhVien implements Serializable {
         this.mssv = mssv;
     }
 
-    public SinhVien(String mssv, int stt, String hoTen, String gioiTinh, String cmnd, String lop,
+    public SinhVien(String mssv, String hoTen, String gioiTinh, String cmnd, String lop,
                     String matKhauMacDinh, String matKhau) {
         this.mssv = mssv;
-        this.stt = stt;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
         this.cmnd = cmnd;
@@ -37,13 +35,7 @@ public class SinhVien implements Serializable {
     public void setMssv(String mssv) {
         this.mssv = mssv;
     }
-    public Integer getStt() {
-        return this.stt;
-    }
 
-    public void setStt(Integer stt) {
-        this.stt = stt;
-    }
     public String getHoTen() {
         return this.hoTen;
     }
