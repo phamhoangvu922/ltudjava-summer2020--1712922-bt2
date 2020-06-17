@@ -4,6 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import pojo.IDPhucKhao;
 import pojo.PhucKhao;
 import connection.HibernateUtil;
 
@@ -28,16 +29,16 @@ public class PhucKhaoDAO {
         return result;
     }
 
-    public static PhucKhao getPhucKhao(int idPhucKhao) {
+    public static PhucKhao getPhucKhao(IDPhucKhao id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<PhucKhao> result = null;
 
         try {
-            String hql = "select re";
-            hql += " from PhucKhao re";
-            hql += " where re.id=:idPhucKhao";
+            String hql = "select re from PhucKhao re where d.id.mssv=:mssv and d.id.monHoc=:monHoc and d.id.ngay = ngay";
             Query query = session.createQuery(hql);
-            query.setParameter("idPhucKhao", idPhucKhao);
+            query.setParameter("mssv", id.getMssv());
+            query.setString("monhoc", id.getMonHoc());
+            query.setString("ngay", id.getNgay());
             result = (List<PhucKhao>) query.list();
         } catch(HibernateException ex) {
             System.err.println(ex);
@@ -61,10 +62,9 @@ public class PhucKhaoDAO {
             hql += " from PhucKhao pk";
             hql += " where re.mssv=:mssv and pk.monHoc=:monHoc and pk.cotDiem=:cotDiem and pk.idBangPhucKhao=:idBangPhucKhao";
             Query query = session.createQuery(hql);
-            query.setParameter("mssv", pk.getMssv());
-            query.setParameter("MonHoc", pk.getMonHoc());
+            query.setParameter("mssv", pk.getId().getMssv());
+            query.setParameter("MonHoc", pk.getId().getMonHoc());
             query.setParameter("cotDiem", pk.getCotDiem());
-            query.setParameter("idBangPhucKhao", pk.getIdBangPhucKhao());
             result = (List<PhucKhao>) query.list();
         } catch(HibernateException ex) {
             System.err.println(ex);

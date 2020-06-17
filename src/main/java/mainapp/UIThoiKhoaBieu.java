@@ -1,6 +1,9 @@
 package mainapp;
 
+import dao.SinhVienDAO;
+import dao.ThoiKhoaBieuDAO;
 import pojo.IDThoiKhoaBieu;
+import pojo.SinhVien;
 import pojo.ThoiKhoaBieu;
 
 import javax.swing.*;
@@ -11,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -76,12 +80,20 @@ public class UIThoiKhoaBieu extends JPanel implements ActionListener {
             }
         }
         if(e.getSource() == btnImport){
-            if (!txtClassImp.getText().isEmpty() && selectedFile != null) {
+            if (selectedFile != null) {
                 String pathInput = selectedFile.getAbsolutePath();
                 DocFile rf = new DocFile();
                 try {
-                    rf.readFileTKB(pathInput);
-//                    getDanhSachTKB(txtClassImp.getText());
+                    List<ThoiKhoaBieu> tkb = rf.readFileTKB(pathInput);
+                    for (int i = 0; i < tkb.size(); i++) {
+                        boolean done;
+                        done = ThoiKhoaBieuDAO.themThoiKhoaBieu(tkb.get(i));
+                        if (done == false)
+                        {
+                            System.out.println("Thêm TKB thất bại");
+                        }
+                    }
+//                    getDanhSachSV(txtClassImp.getText());
                 } catch (IOException ex) {
                     Logger.getLogger(UITrangChu.class.getName()).log(Level.SEVERE, null, ex);
                 }

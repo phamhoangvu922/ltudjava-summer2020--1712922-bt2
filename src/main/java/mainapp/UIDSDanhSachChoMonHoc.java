@@ -86,8 +86,8 @@ public class UIDSDanhSachChoMonHoc  extends JPanel implements ActionListener  {
         listStudentsSubject = DanhSachChoMonHocDAO.layDanhSachSinhVienTheoMonHoc(subjectName);
         for (pojo.DanhSachChoMonHoc dsmh : listStudentsSubject)
         {
-            model.addRow(new Object[]{dsmh.getId().getMssv(), dsmh.getHoTen(), dsmh.getGioiTinh(), dsmh.getCmnd(),
-                    dsmh.getLop(),dsmh.getId().getMonHoc()});
+            model.addRow(new Object[]{dsmh.getId().getMssv(), dsmh.getHoTen(), dsmh.getId().getLop(),dsmh.getGioiTinh(), dsmh.getCmnd(),
+                    dsmh.getId().getMaMonHoc()});
         }
         table.setModel(model);
 

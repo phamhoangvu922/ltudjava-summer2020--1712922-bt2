@@ -1,6 +1,8 @@
 package mainapp;
 
+import dao.DiemDAO;
 import dao.SinhVienDAO;
+import pojo.Diem;
 import pojo.SinhVien;
 
 import javax.swing.*;
@@ -11,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -105,9 +108,20 @@ public class UIDiem  extends JPanel implements ActionListener {
         if(e.getSource() == btnImport){
             if (selectedFile != null) {
                 String pathInput = selectedFile.getAbsolutePath();
+                DocFile df = new DocFile();
                 try {
-                    DocFile df = new DocFile();
-                    df.readFileDiem(pathInput);
+                    boolean done=false;
+                    List<Diem> diem = df.readFileDiem(pathInput);
+                    for (int i = 0; i < diem.size(); i++) {
+                        done = DiemDAO.themDiem(diem.get(i));
+                    }
+                    if (done == false)
+                    {
+                        JOptionPane.showMessageDialog(null, "Thêm điếm thất bại !!!");                        }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Thêm điểm thành công !!!");
+                    }
 //                    getDanhSachSV(txtClassImp.getText());
                 } catch (IOException ex) {
                     Logger.getLogger(UITrangChu.class.getName()).log(Level.SEVERE, null, ex);

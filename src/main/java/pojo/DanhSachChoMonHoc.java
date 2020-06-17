@@ -7,18 +7,16 @@ public class DanhSachChoMonHoc implements Serializable {
     private String hoTen;
     private String gioiTinh;
     private String cmnd;
-    private String lop;
 
     public  DanhSachChoMonHoc()
     {
 
     }
-    public DanhSachChoMonHoc (IDDanhSachChoMonHoc id, String hoTen, String gioiTinh, String cmnd, String lop) {
+    public DanhSachChoMonHoc (IDDanhSachChoMonHoc id, String hoTen, String gioiTinh, String cmnd) {
         this.id = id;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
         this.cmnd = cmnd;
-        this.lop = lop;
     }
 
     public IDDanhSachChoMonHoc getId() {
@@ -48,13 +46,6 @@ public class DanhSachChoMonHoc implements Serializable {
 
     public void setCmnd(String cmnd) {
         this.cmnd = cmnd;
-    }
-    public String getLop() {
-        return this.lop;
-    }
-
-    public void setLop(String lop) {
-        this.lop = lop;
     }
 
 }

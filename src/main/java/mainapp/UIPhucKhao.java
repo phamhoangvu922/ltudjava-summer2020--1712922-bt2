@@ -4,6 +4,7 @@ import dao.BangPhucKhaoDAO;
 import dao.PhucKhaoDAO;
 import dao.SinhVienDAO;
 import pojo.BangPhucKhao;
+import pojo.IDPhucKhao;
 import pojo.PhucKhao;
 import pojo.SinhVien;
 
@@ -31,7 +32,7 @@ public class UIPhucKhao extends JPanel implements ActionListener {
         pnPhucKhao.setLayout(new GridLayout(1, 2));
 
         JPanel pnImport = new JPanel();
-        pnImport.setLayout(new GridLayout(10, 2, 2, 2));
+        pnImport.setLayout(new GridLayout(15, 2, 2, 2));
         TitledBorder titleSelect = new TitledBorder("Nộp phúc khảo");
         pnImport.setBorder(titleSelect);
        // pnImport.setLayout(null);
@@ -46,7 +47,9 @@ public class UIPhucKhao extends JPanel implements ActionListener {
         jLabel5 = new JLabel("Điểm đề nghị");
         jtxtCotDiem = new JTextField(20);
         jtxtDiemDeNghi = new JTextField(20);
-        jScrollPane2 = new JScrollPane();
+        jLabel8 = new JLabel("Ngày Kiểm tra (nhập theo định dạng dd/mm/yyyy)");
+        jtxtNgayKT = new JTextField(20);
+        //jScrollPane2 = new JScrollPane();
         jtxLyDo = new JTextArea();
         jLabel6 = new JLabel("Đăng kí phúc khảo");
         jLabel7 = new JLabel("Lí do");
@@ -60,6 +63,8 @@ public class UIPhucKhao extends JPanel implements ActionListener {
         pnImport.add(jtxtHoTen);
         pnImport.add(jLabel3);
         pnImport.add(jtxtMonHoc);
+        pnImport.add(jLabel8);
+        pnImport.add(jtxtNgayKT);
         pnImport.add(jLabel4);
         pnImport.add(jtxtCotDiem);
         pnImport.add(jLabel5);
@@ -81,14 +86,19 @@ public class UIPhucKhao extends JPanel implements ActionListener {
             String TenMH = jtxtMonHoc.getText();
             String MSSV = jtxtMSSV.getText();
             String HoTen = jtxtHoTen.getText();
-            int ID = Integer.parseInt(jtxtMSSV.getText());
+            String ngay = jtxtNgayKT.getText();
             String CotDiem = jtxtCotDiem.getText();
             Double Diem = Double.parseDouble(jtxtDiemDeNghi.getText());
             String LyDo = jtxLyDo.getText();
+            IDPhucKhao id = new IDPhucKhao(MSSV,  TenMH, ngay);
 
-            PhucKhao pk = new PhucKhao(MSSV,  HoTen,  TenMH,  CotDiem,  Diem,  LyDo,ID);
-            if(PhucKhaoDAO.createPhucKhao(pk))
+            PhucKhao pk = new PhucKhao(id, HoTen,  CotDiem,  Diem,  LyDo);
+            if(PhucKhaoDAO.createPhucKhao(pk)) {
                 JOptionPane.showMessageDialog(null, "!!! Đăng ký phúc khảo thành công");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "!!! Đăng ký phúc khảo không thành công");
+            }
         }
     }
 }

@@ -133,4 +133,24 @@ public class SinhVienDAO {
         return true;
     }
 
+    public static boolean capNhatMatKhauSinhVien(SinhVien sv) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        if (SinhVienDAO.layThongTinSinhVien(sv.getMssv()) == null) {
+            return false;
+        }
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            session.update(sv);
+            transaction.commit();
+        } catch (HibernateException ex) {
+            //Log the exception
+            transaction.rollback();
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return true;
+    }
+
 }

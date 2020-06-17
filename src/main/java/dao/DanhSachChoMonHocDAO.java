@@ -45,11 +45,11 @@ public class DanhSachChoMonHocDAO {
         return ds;
     }
 
-    public static DanhSachChoMonHoc layThongTinSinhVien(String maMonHoc, String maMSSV) {
+    public static DanhSachChoMonHoc layThongTinSinhVien(String maMonHoc, String maMSSV, String lop) {
         DanhSachChoMonHoc tkb = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            IDDanhSachChoMonHoc svmhId = new IDDanhSachChoMonHoc(maMSSV, maMonHoc);
+            IDDanhSachChoMonHoc svmhId = new IDDanhSachChoMonHoc(maMSSV, maMonHoc, lop);
             tkb = (DanhSachChoMonHoc) session.get(DanhSachChoMonHoc.class, svmhId);
         } catch (HibernateException ex) {
             //Log the exception
@@ -62,7 +62,7 @@ public class DanhSachChoMonHocDAO {
 
     public static boolean themSinhVienMonHoc(DanhSachChoMonHoc svmh) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        if (DanhSachChoMonHocDAO.layThongTinSinhVien(svmh.getId().getMssv(),svmh.getId().getMonHoc())!=null) {
+        if (DanhSachChoMonHocDAO.layThongTinSinhVien(svmh.getId().getMssv(),svmh.getId().getMaMonHoc(),svmh.getId().getLop())!=null) {
             return false;
         }
         Transaction transaction = null;
@@ -79,9 +79,9 @@ public class DanhSachChoMonHocDAO {
         }
         return true;
     }
-    public static boolean xoaSinhVienMonHoc(String maMonHoc, String maMSSV) {
+    public static boolean xoaSinhVienMonHoc(String maMonHoc, String maMSSV, String lop) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        DanhSachChoMonHoc svmh = DanhSachChoMonHocDAO.layThongTinSinhVien(maMonHoc,maMSSV);
+        DanhSachChoMonHoc svmh = DanhSachChoMonHocDAO.layThongTinSinhVien(maMonHoc,maMSSV, lop);
         if(svmh==null){
             return false;
         }

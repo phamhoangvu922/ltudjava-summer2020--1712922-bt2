@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 public class UITrangChuSinhVien extends JFrame {
     JMenuBar jmbMain;
     JMenu jmAccount, jmPersonalScore,jmPhucKhao;
-    JMenuItem jmiImport;
+    JMenuItem jmiImport, jmiPassword;
     JPanel pnMain;
     JButton btnLogout;
 
@@ -28,8 +28,12 @@ public class UITrangChuSinhVien extends JFrame {
         UIPhucKhao pk = new UIPhucKhao();
         JPanel pnPhucKhao = pk.Import(mssv);
 
+        UIDoiMatKhau mk = new UIDoiMatKhau();
+        JPanel pnMK = mk.Import(mssv);
+
         pnMain = new JPanel(new CardLayout());
         pnMain.add(pnPhucKhao, "PhucKhao");
+        pnMain.add(pnMK, "DoiMK");
 
         final CardLayout cl = (CardLayout) (pnMain.getLayout());
 
@@ -38,8 +42,15 @@ public class UITrangChuSinhVien extends JFrame {
                 cl.show(pnMain, "PhucKhao");
             }
         });
+        jmiPassword = new JMenuItem(new AbstractAction("Thay đồi mật khẩu") {
+            public void actionPerformed(ActionEvent e) {
+                cl.show(pnMain, "DoiMK");
+            }
+        });
 
         jmPhucKhao.add(jmiImport);
+        jmAccount.add(jmiPassword);
+
         jmbMain.add(jmPhucKhao);
         jmbMain.add(jmPersonalScore);
         jmbMain.add(jmAccount);

@@ -1,5 +1,7 @@
 package dao;
 import connection.HibernateUtil;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -9,6 +11,22 @@ import pojo.ThoiKhoaBieu;
 import pojo.IDThoiKhoaBieu;
 
 public class ThoiKhoaBieuDAO {
+    public static List<ThoiKhoaBieu> layDanhSachThoiKhoaBieu() {
+        List<ThoiKhoaBieu> ds = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            String hql = "select tkb from ThoiKhoaBieu tkb group by lop";
+            Query query = session.createQuery(hql);
+            ds = query.list();
+        } catch (HibernateException ex) {
+            //Log the exception
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return ds;
+    }
+
     public static List<ThoiKhoaBieu> layDanhSachThoiKhoaBieuTheoLop(String tenLop) {
         List<ThoiKhoaBieu> ds = null;
         Session session = HibernateUtil.getSessionFactory().openSession();

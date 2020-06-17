@@ -7,8 +7,11 @@
             <key-property name="mssv" type="string">
                 <column name="mssv" length="15" />
             </key-property>
-            <key-property name="monHoc" type="string">
-                <column name="monHoc" length="50" />
+            <key-property name="maMonHoc" type="string">
+                <column name="maMonHoc" length="15" />
+            </key-property>
+            <key-property name="lop" type="string">
+                <column name="lop" length="10" />
             </key-property>
         </composite-id>
         <property name="hoTen" type="string">
@@ -19,9 +22,6 @@
         </property>
         <property name="cmnd" type="string">
             <column name="cmnd" length="20" />
-        </property>
-        <property name="lop" type="string">
-            <column name="lop" length="10" />
         </property>
     </class>
 </hibernate-mapping>

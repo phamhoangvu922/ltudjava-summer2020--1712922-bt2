@@ -113,7 +113,11 @@ public class UILop extends JPanel implements ActionListener {
                         done = SinhVienDAO.themSinhVien(lsv.get(i));
                         if (done == false)
                         {
-                            System.out.println("Thêm TKB thất bại");
+                            JOptionPane.showMessageDialog(null, "Thêm thất bại !!!");
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "Thêm thành công !!!");
                         }
                     }
 //                    getDanhSachSV(txtClassImp.getText());
@@ -126,7 +130,8 @@ public class UILop extends JPanel implements ActionListener {
         }
         if(e.getSource() == btnCreate){
             if (!txtStudentIDCre.getText().isEmpty() && !txtStudentNameCre.getText().isEmpty() && !txtClassCre.getText().isEmpty()) {
-                SinhVien sv = new SinhVien(txtStudentIDCre.getText(), txtStudentNameCre.getText(), txtGenderCre.getText(), txtCMNDCre.getText(), txtClassCre.getText(), null, null);
+                SinhVien sv = new SinhVien(txtStudentIDCre.getText(), txtStudentNameCre.getText(), txtGenderCre.getText(),
+                        txtCMNDCre.getText(),txtClassCre.getText(),  txtCMNDCre.getText(),  txtCMNDCre.getText());
                 boolean create = SinhVienDAO.themSinhVien(sv);
                 if(create){
                   //  getDanhSachSV(txtClassCre.getText());

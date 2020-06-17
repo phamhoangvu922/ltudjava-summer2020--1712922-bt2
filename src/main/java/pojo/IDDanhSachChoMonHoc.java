@@ -4,16 +4,18 @@ import java.io.Serializable;
 
 public class IDDanhSachChoMonHoc implements Serializable {
     private String mssv;
-    private String monHoc;
+    private String maMonHoc;
+    private  String lop;
 
 
     public  IDDanhSachChoMonHoc()
     {
 
     }
-    public IDDanhSachChoMonHoc(String mssv, String monHoc) {
+    public IDDanhSachChoMonHoc(String mssv, String maMonHoc, String lop) {
         this.mssv = mssv;
-        this.monHoc = monHoc;
+        this.maMonHoc = maMonHoc;
+        this.lop = lop;
     }
 
     public String getMssv() {
@@ -23,12 +25,20 @@ public class IDDanhSachChoMonHoc implements Serializable {
     public void setMssv(String mssv) {
         this.mssv = mssv;
     }
-    public String getMonHoc() {
-        return this.monHoc;
+    public String getMaMonHoc() {
+        return this.maMonHoc;
     }
 
-    public void setMonHoc(String monHoc) {
-        this.monHoc = monHoc;
+    public void setMaMonHoc(String monHoc) {
+        this.maMonHoc = monHoc;
+    }
+
+    public String getLop() {
+        return this.lop;
+    }
+
+    public void setLop(String lop) {
+        this.lop = lop;
     }
 
 }

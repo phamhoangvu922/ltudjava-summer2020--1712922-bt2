@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,6 +114,7 @@ public class DocFile {
             line = br.readLine();
             String lop = parseCsvLine1(line).get(0);
             String maMonHoc = parseCsvLine1(line).get(1);
+            maMonHoc = maMonHoc.substring(0,6);
             line = br.readLine();
             while ((line = br.readLine()) != null) {
                 List<String> result = new ArrayList<String>();

@@ -42,7 +42,7 @@ public class UIDSDiem  extends JPanel implements ActionListener  {
         txtClass.setBounds(120, 20, 200, 30);
 
         JLabel lblSubject = new JLabel();
-        lblSubject.setText("Tên môn học: ");
+        lblSubject.setText("Mã môn học: ");
         lblSubject.setBounds(320, 20, 100, 30);
         txtSubject = new JTextField();
         txtSubject.setBounds(420, 20, 200, 30);
@@ -98,18 +98,18 @@ public class UIDSDiem  extends JPanel implements ActionListener  {
         for (pojo.Diem diem : listScores)
         {
             String result = "";
-            if(diem.getDiemTong()>5)
+            if(diem.getDiemTong()>=5)
             {
                 result = "Đậu";
-                countPass = countPass++;
+                countPass = countPass+1;
             }
             else
             {
                 result = "Rớt";
-                countFailed = countFailed++;
+                countFailed = countFailed+1;
             }
             model.addRow(new Object[]{diem.getId().getMssv(), diem.getHoTen(), diem.getDiemGk(), diem.getDiemCk(),diem.getDiemKhac(),
-                    diem.getDiemTong(),diem.getId().getLop(), diem.getId().getMonHoc()});
+                    diem.getDiemTong(),diem.getId().getLop(), diem.getId().getMonHoc(),result});
         }
         table.setModel(model);
         lblPercentFailed.setText("Số lượng rớt: " + countFailed + "   Tỉ lệ: " + ((double)Math.round((((float) countFailed / listScores.size()) * 100)*10)/10) + "%");
