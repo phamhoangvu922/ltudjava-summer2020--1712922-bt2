@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 public class UITrangChuSinhVien extends JFrame {
     JMenuBar jmbMain;
     JMenu jmAccount, jmPersonalScore,jmPhucKhao;
-    JMenuItem jmiImport, jmiPassword;
+    JMenuItem jmiImport, jmiPassword, jmiPersonalScore;
     JPanel pnMain;
     JButton btnLogout;
 
@@ -31,9 +31,13 @@ public class UITrangChuSinhVien extends JFrame {
         UIDoiMatKhau mk = new UIDoiMatKhau();
         JPanel pnMK = mk.Import(mssv);
 
+        UIDiemCaNhan dcn = new UIDiemCaNhan();
+        JPanel pnDCN = dcn.Import(mssv);
+
         pnMain = new JPanel(new CardLayout());
         pnMain.add(pnPhucKhao, "PhucKhao");
         pnMain.add(pnMK, "DoiMK");
+        pnMain.add(pnDCN,"DiemCaNhan");
 
         final CardLayout cl = (CardLayout) (pnMain.getLayout());
 
@@ -47,9 +51,15 @@ public class UITrangChuSinhVien extends JFrame {
                 cl.show(pnMain, "DoiMK");
             }
         });
+        jmiPersonalScore = new JMenuItem(new AbstractAction("Xem điểm cá nhân") {
+            public void actionPerformed(ActionEvent e) {
+                cl.show(pnMain, "DiemCaNhan");
+            }
+        });
 
         jmPhucKhao.add(jmiImport);
         jmAccount.add(jmiPassword);
+        jmPersonalScore.add(jmiPersonalScore);
 
         jmbMain.add(jmPhucKhao);
         jmbMain.add(jmPersonalScore);
