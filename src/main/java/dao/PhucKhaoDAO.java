@@ -1,4 +1,7 @@
 package dao;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -9,24 +12,32 @@ import pojo.PhucKhao;
 import connection.HibernateUtil;
 
 public class PhucKhaoDAO {
-    public static List<PhucKhao> getListPhucKhao(int idBangPhucKhao) {
+    public static List<PhucKhao> getListPhucKhao(Date ngayBD, Date ngayKT) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<PhucKhao> result = null;
+        List<PhucKhao> finalResult = null;
 
         try {
             String hql = "select re";
             hql += " from PhucKhao re";
-            hql += " where re.idBangPhucKhao=:idBangPhucKhao";
             Query query = session.createQuery(hql);
-            query.setParameter("idBangPhucKhao", idBangPhucKhao);
             result = (List<PhucKhao>) query.list();
-        } catch(HibernateException ex) {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            for (int i=0; i<result.size(); i++)
+            {
+                Date date = formatter.parse(result.get(i).getDate());
+                if(date.after(ngayBD)&&date.before(ngayKT))
+                {
+                    finalResult.add(result.get(i));
+                }
+            }
+        } catch(HibernateException | ParseException ex) {
             System.err.println(ex);
         } finally {
             session.close();
         }
 
-        return result;
+        return finalResult;
     }
 
     public static PhucKhao getPhucKhao(IDPhucKhao id) {

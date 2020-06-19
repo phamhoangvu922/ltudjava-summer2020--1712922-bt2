@@ -6,15 +6,19 @@ public class PhucKhao {
     private String cotDiem;
     private Double diemMongMuon;
     private String lyDo;
+    private String tinhTrang;
+    private String date;
 
 
 
-    public PhucKhao(IDPhucKhao id, String hoTen,String cotDiem, Double diemMongMuon, String lyDo) {
+    public PhucKhao(IDPhucKhao id, String hoTen,String cotDiem, Double diemMongMuon, String lyDo, String tinhTrang, String date) {
         this.id = id;
         this.hoTen = hoTen;
         this.cotDiem = cotDiem;
         this.diemMongMuon = diemMongMuon;
         this.lyDo = lyDo;
+        this.tinhTrang = tinhTrang;
+        this.date = date;
     }
 
     public IDPhucKhao getId() {
@@ -57,4 +61,19 @@ public class PhucKhao {
         this.lyDo = lyDo;
     }
 
+    public String getTinhTrang() {
+        return tinhTrang;
+    }
+
+    public void setTinhTrang(String tinhTrang) {
+        this.tinhTrang = tinhTrang;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 }

@@ -27,5 +27,11 @@
         <property name="lyDo" type="string">
             <column name="lyDo" length="65535" />
         </property>
+        <property name="tinhTrang" type="string">
+            <column name="tinhTrang" length="20" />
+        </property>
+        <property name="date" type="string">
+            <column name="date" length="20" />
+        </property>
     </class>
 </hibernate-mapping>

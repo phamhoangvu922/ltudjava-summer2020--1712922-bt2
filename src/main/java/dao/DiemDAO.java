@@ -79,7 +79,7 @@ public class DiemDAO {
 
     public static boolean themDiem(Diem d) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        if (DiemDAO.layThongTinDiem(d.getId().getMssv(),d.getId().getLop(),d.getId().getMonHoc())!=null) {
+        if (DiemDAO.layThongTinDiem(d.getId().getMssv(),d.getId().getLop(),d.getId().getMonHoc()) != null) {
             return false;
         }
         Transaction transaction = null;
@@ -97,9 +97,9 @@ public class DiemDAO {
         return true;
     }
 
-    public static boolean capNhatThongTinSinhVien(Diem d) {
+    public static boolean capNhatDiem(Diem d) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        if (DiemDAO.layThongTinDiem(d.getId().getMssv(),d.getId().getLop(),d.getId().getMonHoc())!=null) {
+        if (DiemDAO.layThongTinDiem(d.getId().getMssv(),d.getId().getLop(),d.getId().getMonHoc())==null) {
             return false;
         }
         Transaction transaction = null;

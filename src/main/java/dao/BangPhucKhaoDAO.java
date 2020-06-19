@@ -8,13 +8,12 @@ import pojo.BangPhucKhao;
 import connection.HibernateUtil;
 
 public class BangPhucKhaoDAO {
-    public static BangPhucKhao getBangPhucKhao() {
+    public static BangPhucKhao getBangPhucKhao(String idBang) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         BangPhucKhao result = null;
 
         try {
-            Integer status = 1;
-            result = (BangPhucKhao) session.get(BangPhucKhao.class, status);
+            result = (BangPhucKhao) session.get(BangPhucKhao.class, idBang);
         } catch (HibernateException ex) {
             System.err.println(ex);
         } finally {
@@ -60,12 +59,15 @@ public class BangPhucKhaoDAO {
 
     public static boolean themBangPhucKhao(BangPhucKhao bpk) {
         Session session = HibernateUtil.getSessionFactory().openSession();
+        if (BangPhucKhaoDAO.getBangPhucKhao(bpk.getId())!= null)
+        {
+            return false;
+        }
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
             session.save(bpk);
             transaction.commit();
-            System.out.print("them bpk ok");
         } catch (HibernateException ex) {
             System.err.println(ex);
         } finally {

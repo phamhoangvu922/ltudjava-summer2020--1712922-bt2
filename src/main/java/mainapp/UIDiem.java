@@ -3,6 +3,7 @@ package mainapp;
 import dao.DiemDAO;
 import dao.SinhVienDAO;
 import pojo.Diem;
+import pojo.IDDiem;
 import pojo.SinhVien;
 
 import javax.swing.*;
@@ -22,7 +23,8 @@ public class UIDiem  extends JPanel implements ActionListener {
     JButton btnSelect, btnImport, btnCreate;
     JTable table;
     JScrollPane jspDSLop;
-    JTextField txtClassImp,txtSubjectImp, txtClassCre, txtStudentIDCre, txtStudentNameCre, txtGenderCre, txtCMNDCre;
+    JTextField txtClassImp,txtSubjectImp, txtStudentID, txtScoreGK, txtScoreCK,txtScoreKhac, txtScoreTong,txtStudentIDMon, txtClassCre,
+    txtStudentName;
     File selectedFile;
 
     public JPanel Import() {
@@ -59,32 +61,47 @@ public class UIDiem  extends JPanel implements ActionListener {
 
         JPanel pnCreate = new JPanel();
         pnCreate.setLayout(new GridLayout(11, 2, 2, 2));
-        TitledBorder titleCreate = new TitledBorder("Thêm mới");
+        TitledBorder titleCreate = new TitledBorder("Cập nhật điểm");
         pnCreate.setBorder(titleCreate);
         JLabel lblClassCre = new JLabel("Tên lớp");
         txtClassCre = new JTextField(20);
-        JLabel lblStudentIDCre = new JLabel("Mã sinh viên");
-        txtStudentIDCre = new JTextField(20);
-        JLabel lblStudentNameCre = new JLabel("Họ tên");
-        txtStudentNameCre = new JTextField(20);
-        JLabel lblGenderCre = new JLabel("Giới tính");
-        txtGenderCre = new JTextField(20);
-        JLabel lblCMNDCre = new JLabel("CMND");
-        txtCMNDCre = new JTextField(20);
+        JLabel lblStudentIDMon = new JLabel("Mã môn");
+        txtStudentIDMon = new JTextField(20);
+        JLabel lblStudentID = new JLabel("Mã số sinh viên");
+        txtStudentID = new JTextField(20);
+        JLabel lblStudentName = new JLabel("Họ tên sinh viên");
+        txtStudentName = new JTextField(20);
+        JLabel lblScoreGK = new JLabel("Điểm GK");
+        txtScoreGK = new JTextField(20);
+        JLabel lblScoreCK = new JLabel("Điểm CK");
+        txtScoreCK = new JTextField(20);
+        JLabel lblScoreKhac = new JLabel("Điểm Khác");
+        txtScoreKhac = new JTextField(20);
+        JLabel lblScoreTong = new JLabel("Điểm tổng");
+        txtScoreTong = new JTextField(20);
         btnCreate = new JButton("Lưu");
         btnCreate.setBackground(Color.lightGray);
         pnCreate.add(lblClassCre);
         pnCreate.add(txtClassCre);
-        pnCreate.add(lblStudentIDCre);
-        pnCreate.add(txtStudentIDCre);
-        pnCreate.add(lblStudentNameCre);
-        pnCreate.add(txtStudentNameCre);
-        pnCreate.add(lblGenderCre);
-        pnCreate.add(txtGenderCre);
-        pnCreate.add(lblCMNDCre);
-        pnCreate.add(txtCMNDCre);
+        pnCreate.add(lblStudentIDMon);
+        pnCreate.add(txtStudentIDMon);
+        pnCreate.add(lblStudentID);
+        pnCreate.add(txtStudentID);
+        pnCreate.add(lblStudentName);
+        pnCreate.add(txtStudentName);
+        pnCreate.add(lblScoreGK);
+        pnCreate.add(txtScoreGK);
+        pnCreate.add(lblScoreCK);
+        pnCreate.add(txtScoreCK);
+        pnCreate.add(lblScoreKhac);
+        pnCreate.add(txtScoreKhac);
+        pnCreate.add(lblScoreTong);
+        pnCreate.add(txtScoreTong);
         pnCreate.add(btnCreate);
         //pnInput.add(pnCreate);
+
+
+
 
         pnScore.add(pnImport);
         pnScore.add(pnCreate);
@@ -131,15 +148,18 @@ public class UIDiem  extends JPanel implements ActionListener {
             }
         }
         if(e.getSource() == btnCreate){
-            if (!txtStudentIDCre.getText().isEmpty() && !txtStudentNameCre.getText().isEmpty() && !txtClassCre.getText().isEmpty()) {
-                SinhVien sv = new SinhVien(txtStudentIDCre.getText(), txtStudentNameCre.getText(),
-                        txtGenderCre.getText(), txtCMNDCre.getText(), txtClassCre.getText(), null, null);
-                boolean create = SinhVienDAO.themSinhVien(sv);
+            if (!txtClassCre.getText().isEmpty() && !txtStudentIDMon.getText().isEmpty() && !txtStudentID.getText().isEmpty())
+            {
+                IDDiem id = new IDDiem(txtStudentID.getText(),txtClassCre.getText(), txtStudentIDMon.getText());
+                Diem sv = new Diem(id, txtStudentName.getText(), Float.parseFloat(txtScoreGK.getText()),
+                        Float.parseFloat(txtScoreCK.getText()),Float.parseFloat(txtScoreKhac.getText()),
+                        Float.parseFloat(txtScoreTong.getText()));
+                boolean create = DiemDAO.capNhatDiem(sv);
                 if(create){
                     //getDanhSachDiem(txtClassCre.getText(),txtSubjectImp.getText());
-                    JOptionPane.showMessageDialog(null, "Thêm thành công !!!");
+                    JOptionPane.showMessageDialog(null, "Cập nhật thành công !!!");
                 }else{
-                    JOptionPane.showMessageDialog(null, "Thêm thất bại !!!");
+                    JOptionPane.showMessageDialog(null, "Cập nhật thất bại !!!");
                 }
             }
         }

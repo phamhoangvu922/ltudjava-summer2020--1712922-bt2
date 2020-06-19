@@ -3,25 +3,15 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="pojo.BangPhucKhao" table="bangphuckhao" catalog="quanlysinhvien" optimistic-lock="version">
-        <id name="id" type="int">
-            <column name="ID" />
-            <generator class="identity" />
+        <id name="id" type="string">
+            <column name="idBang" length="10" />
+            <generator class="assigned" />
         </id>
-        <property name="hocKy" type="string">
-            <column name="HocKy" length="50" />
-        </property>
-        <property name="namHoc" type="string">
-            <column name="NamHoc" length="50" />
-        </property>
-
         <property name="ngayBatDau" type="string">
-            <column name="NgayBatDau" length="19" />
+            <column name="ngayBatDau" length="20" />
         </property>
         <property name="ngayKetThuc" type="string">
-            <column name="NgayKetThuc" length="19" />
-        </property>
-        <property name="trangThai" type="int">
-            <column name="TrangThai"/>
+            <column name="ngayKetThuc" length="20" />
         </property>
     </class>
 </hibernate-mapping>

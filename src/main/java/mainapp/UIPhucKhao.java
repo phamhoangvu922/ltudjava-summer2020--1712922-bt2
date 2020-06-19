@@ -13,10 +13,12 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class UIPhucKhao extends JPanel implements ActionListener {
-    List<BangPhucKhao> bpk;
     private JComboBox jCbbID;
     private JComboBox jComboBox1;
     private JLabel jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9;
@@ -91,8 +93,11 @@ public class UIPhucKhao extends JPanel implements ActionListener {
             Double Diem = Double.parseDouble(jtxtDiemDeNghi.getText());
             String LyDo = jtxLyDo.getText();
             IDPhucKhao id = new IDPhucKhao(MSSV,  TenMH, ngay);
+            Date dateCal = Calendar.getInstance().getTime();
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            String date = dateFormat.format(dateCal);
 
-            PhucKhao pk = new PhucKhao(id, HoTen,  CotDiem,  Diem,  LyDo);
+            PhucKhao pk = new PhucKhao(id, HoTen,  CotDiem,  Diem,  LyDo, "Chưa xem", date);
             if(PhucKhaoDAO.createPhucKhao(pk)) {
                 JOptionPane.showMessageDialog(null, "!!! Đăng ký phúc khảo thành công");
             }

@@ -7,8 +7,9 @@ import java.awt.event.ActionEvent;
 
 public class UITrangChu extends JFrame {
     JMenuBar jmbMain;
-    JMenu jmClass, jmSchedule,jmClassSubject, jmScore;
-    JMenuItem jmiImport, jmiTKB, jmiClSub,jmiClassList, jmiClSubList, jmiTKBList, jimScoreImp, jimScoreList;
+    JMenu jmClass, jmSchedule,jmClassSubject, jmScore, jmPhucKhao;
+    JMenuItem jmiImport, jmiTKB, jmiClSub,jmiClassList, jmiClSubList, jmiTKBList, jimScoreImp, jimScoreList, jimBangPK,
+            jimDSBangPK;
     JPanel pnMain;
     JLabel lbFile;
     JButton btnLogout;
@@ -19,6 +20,8 @@ public class UITrangChu extends JFrame {
         jmSchedule = new JMenu("Quản lí Thời Khoá Biểu");
         jmClassSubject = new JMenu("Quản lí Lớp Môn Học");
         jmScore = new JMenu("Quản lí Điểm");
+        jmPhucKhao = new JMenu("Quản lí Phúc khảo");
+
         btnLogout = new JButton("Đăng xuất");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +57,12 @@ public class UITrangChu extends JFrame {
         UIDSDiem dsd = new UIDSDiem();
         JPanel pnScoreList = dsd.ListDiem();
 
+        UIBangPhucKhao bpk = new UIBangPhucKhao();
+        JPanel pnBangPK = bpk.Import();
+
+        UIDSBangPhucKhao dspk = new UIDSBangPhucKhao();
+        JPanel pnDSPK = dspk.Import();
+
         // add vào card chung
         pnMain = new JPanel(new CardLayout());
         pnMain.add(pnClass, "Class");
@@ -64,6 +73,8 @@ public class UITrangChu extends JFrame {
         pnMain.add(pnScheduleList, "ScheduleList");
         pnMain.add(pnScore, "Score");
         pnMain.add(pnScoreList, "ScoreList");
+        pnMain.add(pnBangPK, "BangPK");
+        pnMain.add(pnDSPK,"DSBangPK");
 
         final CardLayout cl = (CardLayout) (pnMain.getLayout());
 
@@ -115,6 +126,18 @@ public class UITrangChu extends JFrame {
             }
         });
 
+        jimBangPK = new JMenuItem(new AbstractAction("Tạo phúc khảo") {
+            public void actionPerformed(ActionEvent e) {
+                cl.show(pnMain, "BangPK");
+            }
+        });
+
+        jimDSBangPK = new JMenuItem(new AbstractAction("Danh sách phúc khảo") {
+            public void actionPerformed(ActionEvent e) {
+                cl.show(pnMain, "DSBangPK");
+            }
+        });
+
         jmClass.add(jmiImport);
         jmClass.add(jmiClassList);
         jmSchedule.add(jmiTKB);
@@ -123,12 +146,16 @@ public class UITrangChu extends JFrame {
         jmClassSubject.add(jmiClSubList);
         jmScore.add(jimScoreImp);
         jmScore.add(jimScoreList);
+        jmPhucKhao.add(jimBangPK);
+        jmPhucKhao.add(jimDSBangPK);
 
         jmbMain.add(jmClass);
         jmbMain.add(jmSchedule);
         jmbMain.add(jmClassSubject);
         jmbMain.add(jmScore);
+        jmbMain.add(jmPhucKhao);
         jmbMain.add(btnLogout);
+
         this.setJMenuBar(jmbMain);
         this.add(pnMain);
     }

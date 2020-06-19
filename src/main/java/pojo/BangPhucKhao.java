@@ -1,44 +1,19 @@
 package pojo;
 
 public class BangPhucKhao  {
-    private int id;
-    private String hocKy;
-    private String namHoc;
+    private String id;
     private String ngayBatDau;
     private String ngayKetThuc;
-    private int trangThai;
 
-    public BangPhucKhao(String hocKy, String namHoc, String ngayBatDau, String ngayKetThuc, int trangThai) {
-        this.hocKy = hocKy;
-        this.namHoc = namHoc;
-        this.ngayBatDau = ngayBatDau;
-        this.ngayKetThuc = ngayKetThuc;
-        this.trangThai = trangThai;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
+    public BangPhucKhao(String id) {
         this.id = id;
     }
-
-    public String getHocKy() {
-        return hocKy;
+    public BangPhucKhao(String id, String ngayBatDau, String ngayKetThuc) {
+        this.id = id;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
     }
 
-    public void setHocKy(String hocKy) {
-        this.hocKy = hocKy;
-    }
-
-    public String getNamHoc() {
-        return namHoc;
-    }
-
-    public void setNamHoc(String namHoc) {
-        this.namHoc = namHoc;
-    }
 
     public String getNgayBatDau() {
         return ngayBatDau;
@@ -56,12 +31,11 @@ public class BangPhucKhao  {
         this.ngayKetThuc = ngayKetThuc;
     }
 
-    public int getTrangThai() {
-        return trangThai;
+    public String getId() {
+        return id;
     }
 
-    public void setTrangThai(int trangThai) {
-        this.trangThai = trangThai;
+    public void setId(String id) {
+        this.id = id;
     }
-
 }
