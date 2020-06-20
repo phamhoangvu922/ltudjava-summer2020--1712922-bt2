@@ -5,9 +5,11 @@ public class BangPhucKhao  {
     private String ngayBatDau;
     private String ngayKetThuc;
 
-    public BangPhucKhao(String id) {
-        this.id = id;
+    public  BangPhucKhao()
+    {
+
     }
+
     public BangPhucKhao(String id, String ngayBatDau, String ngayKetThuc) {
         this.id = id;
         this.ngayBatDau = ngayBatDau;

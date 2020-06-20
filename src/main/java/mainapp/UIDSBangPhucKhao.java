@@ -5,6 +5,7 @@ import dao.BangPhucKhaoDAO;
 import dao.PhucKhaoDAO;
 import dao.SinhVienDAO;
 import pojo.BangPhucKhao;
+import pojo.IDPhucKhao;
 import pojo.PhucKhao;
 import pojo.SinhVien;
 
@@ -22,8 +23,8 @@ import java.util.List;
 
 public class UIDSBangPhucKhao extends JPanel implements ActionListener {
 
-    JTextField txtPhucKhao;
-    JButton btnSelect;
+    JTextField txtPhucKhao, txtUpdate, txtMSSV, txtMaMon,txtTinhTrang,txtNgay;
+    JButton btnSelect, btnUpdate;
     JTable table;
     JScrollPane jspDSPK;
 
@@ -36,28 +37,57 @@ public class UIDSBangPhucKhao extends JPanel implements ActionListener {
         pnDSPK.setLayout(null);
 
         JPanel pnInput = new JPanel();
-        pnInput.setLayout(new GridLayout(1, 1));
+        pnInput.setLayout(new GridLayout(1, 2));
 
         JPanel pnSelect = new JPanel();
         TitledBorder titleSelect = new TitledBorder("Tìm kiếm");
         pnSelect.setBorder(titleSelect);
-        pnSelect.setLayout(null);
+        pnSelect.setLayout(new GridLayout(10, 2, 2, 2));
 
         JLabel lblPhucKhao = new JLabel();
         lblPhucKhao.setText("Mã phúc khảo: ");
-        lblPhucKhao.setBounds(20, 20, 100, 30);
-        txtPhucKhao = new JTextField();
-        txtPhucKhao.setBounds(120, 20, 250, 30);
+        txtPhucKhao = new JTextField(10);
 
         btnSelect = new JButton("Tìm kiếm");
         btnSelect.setBackground(Color.lightGray);
-        btnSelect.setBounds(500, 20, 100, 30);
 
 
         pnSelect.add(lblPhucKhao);
         pnSelect.add(txtPhucKhao);
         pnSelect.add(btnSelect);
         pnInput.add(pnSelect);
+
+
+        JPanel pnUpdate = new JPanel();
+        TitledBorder titleUpdate = new TitledBorder("Cập nhật tình trạng");
+        pnUpdate.setBorder(titleUpdate);
+        pnUpdate.setLayout(new GridLayout(10, 2, 2, 2));
+
+        JLabel lblUpdate = new JLabel();
+        lblUpdate.setText("Mã số sinh viên: ");
+        txtMSSV = new JTextField(10);
+        JLabel lblMaMon = new JLabel("Mã môn");
+        txtMaMon = new JTextField(10);
+        JLabel lblNgayThi = new JLabel("Ngày thi (nhập theo định dạng dd/mm/yyyy): ");
+        txtNgay = new JTextField(10);
+        JLabel lblTinhTrang = new JLabel("Tình trạng: ");
+        txtTinhTrang = new JTextField(10);
+
+        btnUpdate = new JButton("Cập nhật");
+        btnUpdate.setBackground(Color.lightGray);
+
+
+        pnUpdate.add(lblUpdate);
+        pnUpdate.add(txtMSSV);
+        pnUpdate.add(lblMaMon);
+        pnUpdate.add(txtMaMon);
+        pnUpdate.add(lblNgayThi);
+        pnUpdate.add(txtNgay);
+        pnUpdate.add(lblTinhTrang);
+        pnUpdate.add(txtTinhTrang);
+        pnUpdate.add(btnUpdate);
+        pnInput.add(pnUpdate);
+
 
         JPanel pnListPK = new JPanel();
         TitledBorder titleLitsPK = new TitledBorder("Danh sách các đơn phúc khảo");
@@ -68,19 +98,20 @@ public class UIDSBangPhucKhao extends JPanel implements ActionListener {
         pnListPK.add(jspDSPK);
 
 
-        pnInput.setBounds(10, 20, 765, 80);
-        pnListPK.setBounds(10, 100, 765, 500);
+        pnInput.setBounds(10, 20, 765, 250);
+        pnListPK.setBounds(10, 300, 765, 500);
         pnDSPK.add(pnInput);
         pnDSPK.add(pnListPK);
 
         btnSelect.addActionListener(this);
+        btnUpdate.addActionListener(this);
 
         return  pnDSPK;
     }
 
     public void getDanhSachPK(Date ngayBD, Date ngayKT) {
         //sp.setVisible(true);
-        String[] columns = new String[]{"Mã sinh viên", "Môn học", "Ngày","Họ tên", "Cột điểm", "Điểm mong muốn", "Lý do", "Tình trạng"};
+        String[] columns = new String[]{"Mã sinh viên", "Môn học", "Ngày thi","Họ tên", "Cột điểm", "Điểm mong muốn", "Lý do", "Tình trạng", "Ngày gửi"};
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columns);
 
@@ -88,7 +119,7 @@ public class UIDSBangPhucKhao extends JPanel implements ActionListener {
         for (PhucKhao pk : listPhucKhao)
         {
             model.addRow(new Object[]{pk.getId().getMssv(), pk.getId().getMonHoc(), pk.getId().getNgay(), pk.getHoTen(),
-            pk.getCotDiem(), pk.getDiemMongMuon(), pk.getLyDo(), pk.getTinhTrang()});
+            pk.getCotDiem(), pk.getDiemMongMuon(), pk.getLyDo(), pk.getTinhTrang(), pk.getDate()});
         }
         table.setModel(model);
     }
@@ -104,7 +135,7 @@ public class UIDSBangPhucKhao extends JPanel implements ActionListener {
             else{
                 String dayBegin = bpk.getNgayBatDau();
                 String dayEnd = bpk.getNgayKetThuc();
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                 try {
                     Date beginDate = formatter.parse(dayBegin);
                     Date endDate = formatter.parse(dayEnd);
@@ -114,6 +145,24 @@ public class UIDSBangPhucKhao extends JPanel implements ActionListener {
                     ex.printStackTrace();
                 }
             }
+        }
+
+        if(e.getSource() == btnUpdate) {
+            if(!txtMSSV.getText().isEmpty() && !txtMaMon.getText().isEmpty() && !txtNgay.getText().isEmpty())
+            {
+                IDPhucKhao id = new IDPhucKhao(txtMSSV.getText(), txtMaMon.getText(), txtNgay.getText());
+                PhucKhao pk1 = PhucKhaoDAO.getPhucKhao(id);
+                System.out.println(pk1.getHoTen());
+                pk1.setTinhTrang(txtTinhTrang.getText());
+                boolean create = PhucKhaoDAO.updatePhucKhao(pk1);
+                if(create){
+                    //getDanhSachDiem(txtClassCre.getText(),txtSubjectImp.getText());
+                    JOptionPane.showMessageDialog(null, "Cập nhật thành công !!!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Cập nhật thất bại !!!");
+                }
+            }
+
         }
 
     }

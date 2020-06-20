@@ -7,6 +7,10 @@ public class IDPhucKhao implements Serializable  {
     private String monHoc;
     private String ngay;
 
+    public IDPhucKhao()
+    {
+
+    }
 
     public IDPhucKhao(String mssv, String monHoc, String ngay) {
         this.mssv = mssv;

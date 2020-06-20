@@ -1,6 +1,8 @@
 package pojo;
 
-public class PhucKhao {
+import java.io.Serializable;
+
+public class PhucKhao  implements Serializable {
     private IDPhucKhao id;
     private String hoTen;
     private String cotDiem;
@@ -10,7 +12,10 @@ public class PhucKhao {
     private String date;
 
 
+    public PhucKhao()
+    {
 
+    }
     public PhucKhao(IDPhucKhao id, String hoTen,String cotDiem, Double diemMongMuon, String lyDo, String tinhTrang, String date) {
         this.id = id;
         this.hoTen = hoTen;
