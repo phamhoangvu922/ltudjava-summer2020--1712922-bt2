@@ -107,18 +107,18 @@ public class UILop extends JPanel implements ActionListener {
                 String pathInput = selectedFile.getAbsolutePath();
                 DocFile rf = new DocFile();
                 try {
+                    boolean done = false;
                     List <SinhVien> lsv = rf.readFileSinhVien(pathInput);
                     for (int i = 0; i < lsv.size(); i++) {
-                        boolean done;
                         done = SinhVienDAO.themSinhVien(lsv.get(i));
-                        if (done == false)
-                        {
-                            JOptionPane.showMessageDialog(null, "Thêm thất bại !!!");
-                        }
-                        else
-                        {
-                            JOptionPane.showMessageDialog(null, "Thêm thành công !!!");
-                        }
+                    }
+                    if (done == false)
+                    {
+                        JOptionPane.showMessageDialog(null, "Thêm thất bại !!!");
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Thêm thành công !!!");
                     }
 //                    getDanhSachSV(txtClassImp.getText());
                 } catch (IOException ex) {

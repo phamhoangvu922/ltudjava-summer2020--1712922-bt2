@@ -9,31 +9,15 @@ import pojo.DanhSachChoMonHoc;
 import pojo.IDDanhSachChoMonHoc;
 
 public class DanhSachChoMonHocDAO {
-    public static List<DanhSachChoMonHoc> layDanhSachSinhVienTheoMonHoc(String tenMonhoc) {
-        List<DanhSachChoMonHoc> ds = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
-            String hql = "select dscmh from DanhSachChoMonHoc dscmh "; //where dscmh.monHoc=:monhoc
-            Query query = session.createQuery(hql);
-//            query.setString("monhoc", tenMonhoc);
-            ds = query.list();
-        } catch (HibernateException ex) {
-            //Log the exception
-            System.err.println(ex);
-        } finally {
-            session.close();
-        }
-        return ds;
-    }
 
     public static List<DanhSachChoMonHoc> layDanhSachSinhVienTheoMonHocLop(String tenMonhoc, String tenLop) {
         List<DanhSachChoMonHoc> ds = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
-            String hql = "select dscmh from DanhSachChoMonHoc dscmh where dscmh.id.monHoc=:monHoc and dscmh.lop=:lop";
+            String hql = "select dscmh from DanhSachChoMonHoc dscmh where dscmh.id.maMonHoc=:maMonHoc and dscmh.id.lop=:lop";
             //where dscmh.monHoc=:monHoc and dscmh.lop=:lop
             Query query = session.createQuery(hql);
-            query.setString("monHoc", tenMonhoc);
+            query.setString("maMonHoc", tenMonhoc);
             query.setString("lop", tenLop);
             ds = query.list();
         } catch (HibernateException ex) {

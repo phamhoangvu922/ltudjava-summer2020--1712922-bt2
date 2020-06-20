@@ -41,7 +41,7 @@ public class UIDSDanhSachChoMonHoc  extends JPanel implements ActionListener  {
         txtClass.setBounds(120, 20, 200, 30);
 
         JLabel lblSubject = new JLabel();
-        lblSubject.setText("Tên môn học: ");
+        lblSubject.setText("Mã môn học: ");
         lblSubject.setBounds(320, 20, 100, 30);
         txtSubject = new JTextField();
         txtSubject.setBounds(420, 20, 200, 30);
@@ -83,7 +83,7 @@ public class UIDSDanhSachChoMonHoc  extends JPanel implements ActionListener  {
         model.setColumnIdentifiers(columns);
 
         List<pojo.DanhSachChoMonHoc> listStudentsSubject = null;
-        listStudentsSubject = DanhSachChoMonHocDAO.layDanhSachSinhVienTheoMonHoc(subjectName);
+        listStudentsSubject = DanhSachChoMonHocDAO.layDanhSachSinhVienTheoMonHocLop(subjectName, className);
         for (pojo.DanhSachChoMonHoc dsmh : listStudentsSubject)
         {
             model.addRow(new Object[]{dsmh.getId().getMssv(), dsmh.getHoTen(), dsmh.getId().getLop(),dsmh.getGioiTinh(), dsmh.getCmnd(),

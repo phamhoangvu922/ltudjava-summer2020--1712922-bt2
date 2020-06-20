@@ -12,21 +12,6 @@ import pojo.SinhVien;
 import pojo.ThoiKhoaBieu;
 
 public class DiemDAO {
-    public static List<Diem> layDanhSachDiem() {
-        List<Diem> ds = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
-            String hql = "select d from Diem d";
-            Query query = session.createQuery(hql);
-            ds = query.list();
-        } catch (HibernateException ex) {
-            //Log the exception
-            System.err.println(ex);
-        } finally {
-            session.close();
-        }
-        return ds;
-    }
 
     public static List<Diem> layDanhSachDiemTheoMSSV(String mssv) {
         List<Diem> ds = null;
@@ -117,24 +102,4 @@ public class DiemDAO {
         return true;
     }
 
-    public static boolean xoaSinhVien(String mssv, String maLop, String maMonHoc) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Diem d = DiemDAO.layThongTinDiem(mssv, maLop, maMonHoc);
-        if(d==null){
-            return false;
-        }
-        Transaction transaction = null;
-        try {
-            transaction = session.beginTransaction();
-            session.delete(d);
-            transaction.commit();
-        } catch (HibernateException ex) {
-            //Log the exception
-            transaction.rollback();
-            System.err.println(ex);
-        } finally {
-            session.close();
-        }
-        return true;
-    }
 }

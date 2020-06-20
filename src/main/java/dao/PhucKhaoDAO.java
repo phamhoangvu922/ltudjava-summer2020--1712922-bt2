@@ -68,31 +68,6 @@ public class PhucKhaoDAO {
 
     }
 
-    public static PhucKhao checkPhucKhao(PhucKhao pk) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        List<PhucKhao> result = null;
-
-        try {
-            String hql = "select pk";
-            hql += " from PhucKhao pk";
-            hql += " where re.mssv=:mssv and pk.monHoc=:monHoc and pk.cotDiem=:cotDiem and pk.idBangPhucKhao=:idBangPhucKhao";
-            Query query = session.createQuery(hql);
-            query.setParameter("mssv", pk.getId().getMssv());
-            query.setParameter("MonHoc", pk.getId().getMonHoc());
-            query.setParameter("cotDiem", pk.getCotDiem());
-            result = (List<PhucKhao>) query.list();
-        } catch(HibernateException ex) {
-            System.err.println(ex);
-        } finally {
-            session.close();
-        }
-
-        if(result.size() > 0) {
-            return result.get(0);
-        }
-
-        return null;
-    }
 
     public static boolean updatePhucKhao(PhucKhao re) {
         Session session = HibernateUtil.getSessionFactory().openSession();

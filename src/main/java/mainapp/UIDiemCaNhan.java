@@ -14,7 +14,6 @@ import java.util.List;
 
 public class UIDiemCaNhan  extends JPanel implements ActionListener  {
 
-    private JLabel jLabel1;
     private JScrollPane jScrollPane;
     private  JTable jsvTableDiem;
     private String mssv;

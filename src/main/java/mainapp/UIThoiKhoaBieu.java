@@ -85,13 +85,18 @@ public class UIThoiKhoaBieu extends JPanel implements ActionListener {
                 DocFile rf = new DocFile();
                 try {
                     List<ThoiKhoaBieu> tkb = rf.readFileTKB(pathInput);
+                    boolean done = false;
                     for (int i = 0; i < tkb.size(); i++) {
-                        boolean done;
+
                         done = ThoiKhoaBieuDAO.themThoiKhoaBieu(tkb.get(i));
-                        if (done == false)
-                        {
-                            System.out.println("Thêm TKB thất bại");
-                        }
+                    }
+                    if (done == false)
+                    {
+                        JOptionPane.showMessageDialog(null, "Thêm thất bại !!!");
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Thêm thành công !!!");
                     }
 //                    getDanhSachSV(txtClassImp.getText());
                 } catch (IOException ex) {

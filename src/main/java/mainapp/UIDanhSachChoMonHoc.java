@@ -19,8 +19,6 @@ import java.util.List;
 public class UIDanhSachChoMonHoc extends JPanel implements ActionListener {
     JPanel pnClass;
     JButton btnCreate, btnDelete, btnAdd;
-    JTable table;
-    JScrollPane jspDSLop;
     JTextField txtClassCre, txtStudentIDCre, txtStudentNameCre, txtGenderCre, txtCMNDCre, txtSubjectCre, txtClassDel, txtMSSVDel, txtSubjectDel;
 
     public JPanel QLLMH() {
@@ -30,8 +28,6 @@ public class UIDanhSachChoMonHoc extends JPanel implements ActionListener {
         pnClass.setBorder(titleClass);
         pnClass.setLayout(new GridLayout(2, 2));
 
-        //JPanel pnInput = new JPanel();
-        //pnInput.setLayout(new GridLayout(1, 2));
 
         JPanel pnCreate = new JPanel();
         pnCreate.setLayout(new GridLayout(15, 2, 2, 2));

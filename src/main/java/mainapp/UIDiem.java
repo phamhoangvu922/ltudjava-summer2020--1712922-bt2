@@ -21,8 +21,6 @@ import java.util.logging.Logger;
 public class UIDiem  extends JPanel implements ActionListener {
     JPanel pnScore;
     JButton btnSelect, btnImport, btnCreate;
-    JTable table;
-    JScrollPane jspDSLop;
     JTextField txtClassImp,txtSubjectImp, txtStudentID, txtScoreGK, txtScoreCK,txtScoreKhac, txtScoreTong,txtStudentIDMon, txtClassCre,
     txtStudentName;
     File selectedFile;
@@ -34,30 +32,20 @@ public class UIDiem  extends JPanel implements ActionListener {
         pnScore.setBorder(titleClass);
         pnScore.setLayout(new GridLayout(2, 2));
 
-       // JPanel pnInput = new JPanel();
-        //pnInput.setLayout(new GridLayout(1, 1));
-
 
         JPanel pnImport = new JPanel();
         pnImport.setLayout(new GridLayout(10, 2, 2, 2));
         TitledBorder titleImport = new TitledBorder("Import");
         pnImport.setBorder(titleImport);
 
-        //JLabel lblClassImp = new JLabel("Tên lớp");
-        //txtClassImp = new JTextField(20);
-        //JLabel lblSubjectImp = new JLabel("Tên môn học");
-        //txtSubjectImp = new JTextField(20);
+
         btnSelect = new JButton("Chọn file");
         btnSelect.setBackground(Color.lightGray);
         btnImport = new JButton("Import");
         btnImport.setBackground(Color.lightGray);
-        //pnImport.add(lblClassImp);
-        //pnImport.add(txtClassImp);
-        //pnImport.add(lblSubjectImp);
-        //pnImport.add(txtSubjectImp);
+
         pnImport.add(btnSelect);
         pnImport.add(btnImport);
-        //pnInput.add(pnImport);
 
         JPanel pnCreate = new JPanel();
         pnCreate.setLayout(new GridLayout(11, 2, 2, 2));
@@ -98,7 +86,6 @@ public class UIDiem  extends JPanel implements ActionListener {
         pnCreate.add(lblScoreTong);
         pnCreate.add(txtScoreTong);
         pnCreate.add(btnCreate);
-        //pnInput.add(pnCreate);
 
 
 
